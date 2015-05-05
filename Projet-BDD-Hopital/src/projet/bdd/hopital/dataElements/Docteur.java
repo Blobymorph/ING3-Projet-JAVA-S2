@@ -12,10 +12,19 @@ package projet.bdd.hopital.dataElements;
 public class Docteur extends Employe {
     
     private String specialite;
+
+    public String getSpecialite() {
+        return specialite;
+    }
+
+    public void setSpecialite(String specialite) {
+        this.specialite = specialite;
+    }
     //constructor
     Docteur(int num)
     {
     super(num);
+    this.ElementType = "Docteur";
     }
     
 }

@@ -13,11 +13,27 @@ public class Infirmier extends Employe {
    
     private int code_service;
     private String rotation;
+
+    public int getCode_service() {
+        return code_service;
+    }
+
+    public void setCode_service(int code_service) {
+        this.code_service = code_service;
+    }
+
+    public String getRotation() {
+        return rotation;
+    }
+
+    public void setRotation(String rotation) {
+        this.rotation = rotation;
+    }
     //construcor
     Infirmier(int nume)
     {
     super(nume);
-   
+   this.ElementType = "Infirmier";
     }
     
 }

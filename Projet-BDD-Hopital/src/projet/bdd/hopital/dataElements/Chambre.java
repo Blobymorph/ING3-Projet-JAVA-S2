@@ -13,7 +13,7 @@ package projet.bdd.hopital.dataElements;
 public class Chambre extends DataElement {
     //specific data
 private int numero_chambre;
-int code_service;
+private int code_service;
 private String surveillant;
 private int nombre_lits;
     //Constructor

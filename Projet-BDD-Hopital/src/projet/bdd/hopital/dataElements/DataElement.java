@@ -13,5 +13,6 @@ package projet.bdd.hopital.dataElements;
 
 ///--- GENERIC ELEMENT OF DATABASE ---///
 public class DataElement {
-    
+    protected String ElementType;
+    public String getElementType(){return ElementType;}
 }

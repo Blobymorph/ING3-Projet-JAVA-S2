@@ -48,7 +48,7 @@ private int nombre_lits;
     public void setNombre_lits(int nombre_lits) {
         this.nombre_lits = nombre_lits;
     }
-
+  
     //Constructor
 Chambre(int nume){
     this.ElementType = "Chambre";

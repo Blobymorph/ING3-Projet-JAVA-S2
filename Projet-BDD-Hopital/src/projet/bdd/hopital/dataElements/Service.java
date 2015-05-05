@@ -55,6 +55,15 @@ public class Service extends DataElement {
     this.ElementType = "Service";
     }
     //Methods
-    
-    
+    @Override
+    public String getAddRequest(String Table){
+        String Request = "insert into " + Table;
+        Request += "(";
+        Request += Integer.toString(getCode_service()) + ',';
+        Request += getNom() + ',';
+        Request += getBatiment() + ',';
+        Request += getDirecteur() + ',';
+        Request += ")";
+        return Request;
+    }
 }

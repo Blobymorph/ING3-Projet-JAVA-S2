@@ -71,4 +71,18 @@ public class Employe extends DataElement {
    this.ElementType = "Employe";
     }
     
+    //methods
+    @Override
+    public String getAddRequest(String Table){
+        String Request = "insert into " + Table;
+        Request += "(";
+        Request += Integer.toString(getNum_employe()) + ',';
+        Request += getNom() + ',';
+        Request += getPrenom() + ',';
+        Request += getTel() + ',';
+        Request += getAdresse() + ',';
+        Request += Double.toString(getSalaire()) + ',';
+        Request += ")";
+        return Request;
+    }
 }

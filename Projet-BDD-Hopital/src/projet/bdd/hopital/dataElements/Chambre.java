@@ -50,9 +50,20 @@ private int nombre_lits;
     }
 
     //Constructor
-Chambre(int nume){
-    this.ElementType = "Chambre";
-numero_chambre = nume;
-}
+    Chambre(int nume){
+        this.ElementType = "Chambre";
+    numero_chambre = nume;
+    }
     //Methods
+    @Override
+    public String getAddRequest(String Table){
+        String Request = "insert into " + Table;
+        Request += "(";
+        Request += Integer.toString(getNumero_chambre()) + ',';
+        Request += Integer.toString(getCode_service()) + ',';
+        Request += getCode_service() + ',';
+        Request += Integer.toString(getNombre_lits());
+        Request += ")";
+        return Request;
+    }
 }

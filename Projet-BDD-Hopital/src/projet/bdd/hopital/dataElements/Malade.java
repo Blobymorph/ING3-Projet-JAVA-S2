@@ -3,22 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package projet.bdd.hopital.dataElements;
 
 /**
  *
- * @author Charles
+ * @author thibault
  */
-public class Chambre extends DataElement {
+public class Malade extends DataElement {
     //specific data
-private int numero_chambre;
-int code_service;
-private String surveillant;
-private int nombre_lits;
+    private int numero_malade;
+    private String nom;
+    private String prenom;
+    private String tel;
+    private String adresse;
+    private String mutuelle;
     //Constructor
-Chambre(int nume){
-numero_chambre = nume;
-}
+    Malade(int num)
+    {
+    numero_malade = num;
+    
+    }
     //Methods
 }

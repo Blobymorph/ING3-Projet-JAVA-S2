@@ -13,8 +13,8 @@ package projet.bdd.hopital.dataElements;
 public class Chambre extends DataElement {
     //specific data
 private int numero_chambre;
-private int code_service;
-private String surveillant;
+private String code_service;
+private int num_surveillant;
 private int nombre_lits;
 
     public int getNumero_chambre() {
@@ -25,20 +25,20 @@ private int nombre_lits;
         this.numero_chambre = numero_chambre;
     }
 
-    public int getCode_service() {
+    public String getCode_service() {
         return code_service;
     }
 
-    public void setCode_service(int code_service) {
+    public void setCode_service(String code_service) {
         this.code_service = code_service;
     }
 
-    public String getSurveillant() {
-        return surveillant;
+    public int getSurveillant() {
+        return num_surveillant;
     }
 
-    public void setSurveillant(String surveillant) {
-        this.surveillant = surveillant;
+    public void setSurveillant(int surveillant) {
+        this.num_surveillant = surveillant;
     }
 
     public int getNombre_lits() {
@@ -50,17 +50,24 @@ private int nombre_lits;
     }
   
     //Constructor
-    Chambre(int nume){
-    numero_chambre = nume;
+    public Chambre(String code_service,int numero_chambre,int num_surveillant,int nombre_lits){
+        this.code_service = code_service;
+        this.numero_chambre = numero_chambre;
+        this.num_surveillant = num_surveillant;
+        this.nombre_lits = nombre_lits;
+    }
+    
+    public Chambre(int numero_chambre){
+        this.numero_chambre = numero_chambre;
     }
     //Methods
     @Override
     public String getAddRequest(String Table){
-        String Request = "insert into " + Table;
-        Request += "(";
+        String Request = "insert into " + Table + " values ";
+        Request += "('";
+        Request += getCode_service() + "',";
         Request += Integer.toString(getNumero_chambre()) + ',';
-        Request += Integer.toString(getCode_service()) + ',';
-        Request += getCode_service() + ',';
+        Request += Integer.toString(getSurveillant()) + ',';
         Request += Integer.toString(getNombre_lits());
         Request += ")";
         return Request;

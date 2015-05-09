@@ -13,9 +13,14 @@ public class Infirmier extends Employe {
    
     private int code_service;
     private String rotation;
+    private double salaire;
 
     public int getCode_service() {
         return code_service;
+    }
+
+    public double getSalaire() {
+        return salaire;
     }
 
     public void setCode_service(int code_service) {

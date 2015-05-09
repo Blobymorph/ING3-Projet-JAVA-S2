@@ -52,17 +52,9 @@ public class Service extends DataElement {
     Service(int code)
     {
     code_service = code;
+    this.ElementType = "Service";
     }
     //Methods
-    @Override
-    public String getAddRequest(String Table){
-        String Request = "insert into " + Table;
-        Request += "(";
-        Request += Integer.toString(getCode_service()) + ',';
-        Request += getNom() + ',';
-        Request += getBatiment() + ',';
-        Request += getDirecteur();
-        Request += ");";
-        return Request;
-    }
+    
+    
 }

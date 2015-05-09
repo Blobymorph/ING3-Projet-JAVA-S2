@@ -53,17 +53,7 @@ public class Hospitalisation extends DataElement {
     numero_malade= num_mal;
     code_service = code;
     numero_chambre= numero_ch;
+        this.ElementType = "Hospitalisation";
     }
     //Methods
-    @Override
-    public String getAddRequest(String Table){
-        String Request = "insert into " + Table;
-        Request += "(";
-        Request += Integer.toString(getNumero_malade()) + ',';
-        Request += Integer.toString(getCode_service()) + ',';
-        Request += Integer.toString(getNumero_chambre()) + ',';
-        Request += Integer.toString(getNum_lit());
-        Request += ");";
-        return Request;
-    }
 }

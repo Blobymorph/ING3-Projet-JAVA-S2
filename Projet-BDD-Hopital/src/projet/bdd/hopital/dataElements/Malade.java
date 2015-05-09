@@ -68,9 +68,20 @@ public class Malade extends DataElement {
     //Constructor
     Malade(int num)
     {
-        this.ElementType = "Malade";
-    numero_malade = num;
-    
+        numero_malade = num;
     }
     //Methods
+    @Override
+    public String getAddRequest(String Table){
+        String Request = "insert into " + Table;
+        Request += "(";
+        Request += Integer.toString(getNumero_malade()) + ',';
+        Request += getNom() + ',';
+        Request += getPrenom() + ',';
+        Request += getTel() + ',';
+        Request += getAdresse() + ',';
+        Request += getMutuelle() + ',';
+        Request += ")";
+        return Request;
+    }
 }

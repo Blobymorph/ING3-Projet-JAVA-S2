@@ -24,7 +24,20 @@ public class Docteur extends Employe {
     Docteur(int num)
     {
     super(num);
-    this.ElementType = "Docteur";
     }
-    
+    //methods
+    @Override
+    public String getAddRequest(String Table){
+        String Request = "insert into " + Table;
+        Request += "(";
+        Request += Integer.toString(getNum_employe()) + ',';
+        Request += getNom() + ',';
+        Request += getPrenom() + ',';
+        Request += getTel() + ',';
+        Request += getAdresse() + ',';
+        Request += Double.toString(getSalaire()) + ',';
+        Request += getSpecialite() + ',';
+        Request += ")";
+        return Request;
+    }
 }

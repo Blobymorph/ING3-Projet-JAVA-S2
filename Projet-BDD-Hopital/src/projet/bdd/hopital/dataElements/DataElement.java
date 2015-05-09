@@ -15,5 +15,5 @@ package projet.bdd.hopital.dataElements;
 public abstract class DataElement {
     //protected String ElementType;
     //public String getElementType(){return ElementType;}
-    public String getAddRequest(String Table){return "";}
+    public String getAddRequest(){return "";}
 }

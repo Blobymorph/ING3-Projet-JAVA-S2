@@ -32,8 +32,22 @@ public class Infirmier extends Employe {
     //construcor
     Infirmier(int nume)
     {
-    super(nume);
-   this.ElementType = "Infirmier";
+        super(nume);
     }
-    
+    //methods
+    @Override
+    public String getAddRequest(String Table){
+        String Request = "insert into " + Table;
+        Request += "(";
+        Request += Integer.toString(getNum_employe()) + ',';
+        Request += getNom() + ',';
+        Request += getPrenom() + ',';
+        Request += getTel() + ',';
+        Request += getAdresse() + ',';
+        Request += Double.toString(getSalaire()) + ',';
+        Request += Integer.toString(getCode_service()) + ',';
+        Request += getRotation();
+        Request += ");";
+        return Request;
+    }
 }

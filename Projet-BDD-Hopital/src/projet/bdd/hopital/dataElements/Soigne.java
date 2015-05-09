@@ -33,8 +33,15 @@ public class Soigne extends DataElement {
     Soigne(int num_doc,int num_malad){
     numero_docteur = num_doc;
     numero_malade = num_malad;
-    this.ElementType = "Soigne";
     }
     //Methods
-    
+    @Override
+    public String getAddRequest(String Table){
+        String Request = "insert into " + Table;
+        Request += "(";
+        Request += Integer.toString(getNumero_docteur()) + ',';
+        Request += Integer.toString(getNumero_malade());
+        Request += ");";
+        return Request;
+    }
 }

@@ -33,7 +33,6 @@ public class Infirmier extends Employe {
     Infirmier(int nume)
     {
         super(nume);
-        this.ElementType = "Infirmier";
     }
     //methods
     @Override

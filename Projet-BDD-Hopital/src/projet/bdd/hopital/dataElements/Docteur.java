@@ -24,7 +24,6 @@ public class Docteur extends Employe {
     Docteur(int num)
     {
     super(num);
-    this.ElementType = "Docteur";
     }
     //methods
     @Override

@@ -33,7 +33,6 @@ public class Soigne extends DataElement {
     Soigne(int num_doc,int num_malad){
     numero_docteur = num_doc;
     numero_malade = num_malad;
-    this.ElementType = "Soigne";
     }
     //Methods
     @Override

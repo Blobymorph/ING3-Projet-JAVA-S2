@@ -53,7 +53,6 @@ public class Hospitalisation extends DataElement {
     numero_malade= num_mal;
     code_service = code;
     numero_chambre= numero_ch;
-        this.ElementType = "Hospitalisation";
     }
     //Methods
     @Override

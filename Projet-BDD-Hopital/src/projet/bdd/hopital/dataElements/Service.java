@@ -52,7 +52,6 @@ public class Service extends DataElement {
     Service(int code)
     {
     code_service = code;
-    this.ElementType = "Service";
     }
     //Methods
     @Override

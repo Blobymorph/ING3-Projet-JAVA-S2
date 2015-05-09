@@ -68,9 +68,7 @@ public class Malade extends DataElement {
     //Constructor
     Malade(int num)
     {
-        this.ElementType = "Malade";
-    numero_malade = num;
-    
+        numero_malade = num;
     }
     //Methods
     @Override

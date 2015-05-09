@@ -51,7 +51,6 @@ private int nombre_lits;
 
     //Constructor
     Chambre(int nume){
-        this.ElementType = "Chambre";
     numero_chambre = nume;
     }
     //Methods

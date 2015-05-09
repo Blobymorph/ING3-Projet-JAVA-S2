@@ -68,7 +68,6 @@ public class Employe extends DataElement {
     Employe(int num)
     {
    num_employe = num;
-   this.ElementType = "Employe";
     }
     
     //methods

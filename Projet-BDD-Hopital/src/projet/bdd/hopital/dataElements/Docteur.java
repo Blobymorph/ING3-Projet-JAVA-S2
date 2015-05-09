@@ -36,8 +36,8 @@ public class Docteur extends Employe {
         Request += getTel() + ',';
         Request += getAdresse() + ',';
         Request += Double.toString(getSalaire()) + ',';
-        Request += getSpecialite() + ',';
-        Request += ")";
+        Request += getSpecialite();
+        Request += ");";
         return Request;
     }
 }

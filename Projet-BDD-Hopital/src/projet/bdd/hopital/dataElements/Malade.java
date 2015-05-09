@@ -80,8 +80,8 @@ public class Malade extends DataElement {
         Request += getPrenom() + ',';
         Request += getTel() + ',';
         Request += getAdresse() + ',';
-        Request += getMutuelle() + ',';
-        Request += ")";
+        Request += getMutuelle();
+        Request += ");";
         return Request;
     }
 }

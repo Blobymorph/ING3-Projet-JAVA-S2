@@ -80,8 +80,8 @@ public class Employe extends DataElement {
         Request += getPrenom() + ',';
         Request += getTel() + ',';
         Request += getAdresse() + ',';
-        Request += Double.toString(getSalaire()) + ',';
-        Request += ")";
+        Request += Double.toString(getSalaire());
+        Request += ");";
         return Request;
     }
 }

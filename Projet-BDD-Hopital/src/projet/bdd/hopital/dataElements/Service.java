@@ -61,8 +61,8 @@ public class Service extends DataElement {
         Request += Integer.toString(getCode_service()) + ',';
         Request += getNom() + ',';
         Request += getBatiment() + ',';
-        Request += getDirecteur() + ',';
-        Request += ")";
+        Request += getDirecteur();
+        Request += ");";
         return Request;
     }
 }

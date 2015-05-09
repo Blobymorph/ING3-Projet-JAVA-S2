@@ -62,8 +62,8 @@ public class Hospitalisation extends DataElement {
         Request += Integer.toString(getNumero_malade()) + ',';
         Request += Integer.toString(getCode_service()) + ',';
         Request += Integer.toString(getNumero_chambre()) + ',';
-        Request += Integer.toString(getNum_lit()) + ',';
-        Request += ")";
+        Request += Integer.toString(getNum_lit());
+        Request += ");";
         return Request;
     }
 }

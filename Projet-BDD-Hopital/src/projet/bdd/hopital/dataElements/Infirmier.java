@@ -46,8 +46,8 @@ public class Infirmier extends Employe {
         Request += getAdresse() + ',';
         Request += Double.toString(getSalaire()) + ',';
         Request += Integer.toString(getCode_service()) + ',';
-        Request += getRotation() + ',';
-        Request += ")";
+        Request += getRotation();
+        Request += ");";
         return Request;
     }
 }

@@ -40,8 +40,8 @@ public class Soigne extends DataElement {
         String Request = "insert into " + Table;
         Request += "(";
         Request += Integer.toString(getNumero_docteur()) + ',';
-        Request += Integer.toString(getNumero_malade()) + ',';
-        Request += ")";
+        Request += Integer.toString(getNumero_malade());
+        Request += ");";
         return Request;
     }
 }

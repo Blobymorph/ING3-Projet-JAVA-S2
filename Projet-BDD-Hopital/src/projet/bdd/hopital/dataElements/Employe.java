@@ -15,7 +15,6 @@ public class Employe extends DataElement {
     protected String prenom;
     protected String tel;
     protected String adresse;
-    protected double salaire;
 
     public int getNum_employe() {
         return num_employe;
@@ -56,32 +55,31 @@ public class Employe extends DataElement {
     public void setAdresse(String adresse) {
         this.adresse = adresse;
     }
-
-    public double getSalaire() {
-        return salaire;
-    }
-
-    public void setSalaire(double salaire) {
-        this.salaire = salaire;
-    }
     //constructor
-    Employe(int num)
+    public Employe(int num_employe)
     {
-   num_employe = num;
+        this.num_employe = num_employe;
     }
     
+    public Employe(int num_employe, String nom, String prenom, String adresse, String tel)
+    {
+        this.num_employe = num_employe;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.adresse = adresse;
+        this.tel = tel;
+    }
     //methods
     @Override
     public String getAddRequest(String Table){
-        String Request = "insert into " + Table;
+        String Request = "insert into " + Table + " values ";
         Request += "(";
-        Request += Integer.toString(getNum_employe()) + ',';
-        Request += getNom() + ',';
-        Request += getPrenom() + ',';
-        Request += getTel() + ',';
-        Request += getAdresse() + ',';
-        Request += Double.toString(getSalaire());
-        Request += ");";
+        Request += Integer.toString(getNum_employe()) + ",'";
+        Request += getNom() + "','";
+        Request += getPrenom() + "','";
+        Request += getTel() + "','";
+        Request += getAdresse();
+        Request += "');";
         return Request;
     }
 }

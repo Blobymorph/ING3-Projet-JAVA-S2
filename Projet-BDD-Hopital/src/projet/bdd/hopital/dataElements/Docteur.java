@@ -23,8 +23,15 @@ public class Docteur extends Employe {
     //constructor
     Docteur(int num)
     {
-    super(num);
+        super(num);
     }
+    /*public Docteur(int num, String nom, String prenom, String adresse, String tel){
+        this.num_employe = num_employe;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.adresse = adresse;
+        this.tel = tel;
+    }*/
     //methods
     @Override
     public String getAddRequest(String Table){
@@ -35,7 +42,6 @@ public class Docteur extends Employe {
         Request += getPrenom() + ',';
         Request += getTel() + ',';
         Request += getAdresse() + ',';
-        Request += Double.toString(getSalaire()) + ',';
         Request += getSpecialite();
         Request += ");";
         return Request;

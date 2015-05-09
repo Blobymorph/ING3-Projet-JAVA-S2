@@ -71,8 +71,8 @@ public class Employe extends DataElement {
     }
     //methods
     @Override
-    public String getAddRequest(String Table){
-        String Request = "insert into " + Table + " values ";
+    public String getAddRequest(){
+        String Request = "insert into employe values ";
         Request += "(";
         Request += Integer.toString(getNum_employe()) + ",'";
         Request += getNom() + "','";

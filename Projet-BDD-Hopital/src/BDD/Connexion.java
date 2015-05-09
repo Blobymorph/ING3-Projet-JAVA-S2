@@ -13,7 +13,7 @@ import projet.bdd.hopital.dataElements.*;
  */
 
 public class Connexion {
-    public String createAddElementRequest(String Table,DataElement Element){
-        return Element.getAddRequest(Table);
+    public String createAddElementRequest(DataElement Element){
+        return Element.getAddRequest();
     }
 }

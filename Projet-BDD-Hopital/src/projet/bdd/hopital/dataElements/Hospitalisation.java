@@ -12,7 +12,7 @@ package projet.bdd.hopital.dataElements;
 public class Hospitalisation extends DataElement {
   //specific data
     private int numero_malade;
-    private int code_service;
+    private String code_service;
     private int numero_chambre;
     private int num_lit;
 
@@ -24,11 +24,11 @@ public class Hospitalisation extends DataElement {
         this.numero_malade = numero_malade;
     }
 
-    public int getCode_service() {
+    public String getCode_service() {
         return code_service;
     }
 
-    public void setCode_service(int code_service) {
+    public void setCode_service(String code_service) {
         this.code_service = code_service;
     }
 
@@ -48,19 +48,27 @@ public class Hospitalisation extends DataElement {
         this.num_lit = num_lit;
     }
     //Constructor
-    Hospitalisation(int num_mal,int code, int numero_ch)
+    public Hospitalisation(int num_mal,String code, int numero_ch)
     {
-    numero_malade= num_mal;
-    code_service = code;
-    numero_chambre= numero_ch;
+        numero_malade= num_mal;
+        code_service = code;
+        numero_chambre= numero_ch;
+    }
+    
+    public Hospitalisation(int numero_malade,String code_service,int numero_chambre,int num_lit)
+    {
+        this.numero_malade = numero_malade;
+        this.code_service = code_service;
+        this.numero_chambre = numero_chambre;
+        this.num_lit = num_lit;
     }
     //Methods
     @Override
-    public String getAddRequest(String Table){
-        String Request = "insert into " + Table;
+    public String getAddRequest(){
+        String Request = "insert into hospitalisation values ";
         Request += "(";
-        Request += Integer.toString(getNumero_malade()) + ',';
-        Request += Integer.toString(getCode_service()) + ',';
+        Request += Integer.toString(getNumero_malade()) + ",'";
+        Request += getCode_service() + "',";
         Request += Integer.toString(getNumero_chambre()) + ',';
         Request += Integer.toString(getNum_lit());
         Request += ");";

@@ -30,14 +30,14 @@ public class Soigne extends DataElement {
         this.numero_malade = numero_malade;
     }
     //Constructor
-    Soigne(int num_doc,int num_malad){
-    numero_docteur = num_doc;
-    numero_malade = num_malad;
+    public Soigne(int num_doc,int num_malad){
+        numero_docteur = num_doc;
+        numero_malade = num_malad;
     }
     //Methods
     @Override
-    public String getAddRequest(String Table){
-        String Request = "insert into " + Table;
+    public String getAddRequest(){
+        String Request = "insert into soigne values ";
         Request += "(";
         Request += Integer.toString(getNumero_docteur()) + ',';
         Request += Integer.toString(getNumero_malade());

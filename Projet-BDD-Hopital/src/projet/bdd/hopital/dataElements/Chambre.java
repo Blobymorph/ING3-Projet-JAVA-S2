@@ -62,8 +62,8 @@ private int nombre_lits;
     }
     //Methods
     @Override
-    public String getAddRequest(String Table){
-        String Request = "insert into " + Table + " values ";
+    public String getAddRequest(){
+        String Request = "insert into chambre values ";
         Request += "('";
         Request += getCode_service() + "',";
         Request += Integer.toString(getNumero_chambre()) + ',';

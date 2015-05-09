@@ -37,8 +37,8 @@ public class Docteur extends Employe {
     
     //methods
     @Override
-    public String getAddRequest(String Table){
-        String Request = "insert into " + Table;
+    public String getAddRequest(){
+        String Request = "insert into docteur values ";
         Request += "(";
         Request += Integer.toString(getNum_employe()) + ",'";
         Request += getNom() + "','";

@@ -66,22 +66,30 @@ public class Malade extends DataElement {
         this.mutuelle = mutuelle;
     }
     //Constructor
-    Malade(int num)
+    public Malade(int numero_malade)
     {
-        numero_malade = num;
+        this.numero_malade = numero_malade;
+    }
+    public Malade(int num,String nom,String prenom,String adresse,String tel,String mutuelle){
+        this.numero_malade = numero_malade;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.adresse = adresse;
+        this.tel = tel;
+        this.mutuelle = mutuelle;
     }
     //Methods
     @Override
-    public String getAddRequest(String Table){
-        String Request = "insert into " + Table;
-        Request += "(";
-        Request += Integer.toString(getNumero_malade()) + ',';
-        Request += getNom() + ',';
-        Request += getPrenom() + ',';
-        Request += getTel() + ',';
-        Request += getAdresse() + ',';
+    public String getAddRequest(){
+        String Request = "insert into malade values ";
+        Request += "('";
+        Request += Integer.toString(getNumero_malade()) + "','";
+        Request += getNom() + "','";
+        Request += getPrenom() + "','";
+        Request += getTel() + "','";
+        Request += getAdresse() + "','";
         Request += getMutuelle();
-        Request += ");";
+        Request += "');";
         return Request;
     }
 }

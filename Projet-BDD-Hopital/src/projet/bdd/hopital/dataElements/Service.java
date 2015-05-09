@@ -12,16 +12,16 @@ package projet.bdd.hopital.dataElements;
  */
 public class Service extends DataElement {
     //specific data
-    private int code_service;
+    private String code_service;
     private String nom;
     private String batiment;
-    private String directeur;
+    private int directeur;
 
-    public int getCode_service() {
+    public String getCode_service() {
         return code_service;
     }
 
-    public void setCode_service(int code_service) {
+    public void setCode_service(String code_service) {
         this.code_service = code_service;
     }
 
@@ -41,27 +41,33 @@ public class Service extends DataElement {
         this.batiment = batiment;
     }
 
-    public String getDirecteur() {
+    public int getDirecteur() {
         return directeur;
     }
 
-    public void setDirecteur(String directeur) {
+    public void setDirecteur(int directeur) {
         this.directeur = directeur;
     }
     //Constructor
-    Service(int code)
+    public Service(String code_service)
     {
-    code_service = code;
+        this.code_service = code_service;
+    }
+    public Service(String code_service,String nom,String batiment,int directeur){
+        this.code_service = code_service;
+        this.nom = nom;
+        this.batiment = batiment;
+        this.directeur = directeur;
     }
     //Methods
     @Override
-    public String getAddRequest(String Table){
-        String Request = "insert into " + Table;
-        Request += "(";
-        Request += Integer.toString(getCode_service()) + ',';
-        Request += getNom() + ',';
-        Request += getBatiment() + ',';
-        Request += getDirecteur();
+    public String getAddRequest(){
+        String Request = "insert into service values ";
+        Request += "('";
+        Request += getCode_service() + "','";
+        Request += getNom() + "','";
+        Request += getBatiment() + "',";
+        Request += Integer.toString(getDirecteur());
         Request += ");";
         return Request;
     }

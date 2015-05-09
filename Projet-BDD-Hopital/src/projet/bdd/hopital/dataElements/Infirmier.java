@@ -5,6 +5,9 @@
  */
 package projet.bdd.hopital.dataElements;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  *
  * @author thibault
@@ -47,10 +50,23 @@ public class Infirmier extends Employe {
         this.rotation = rotation;
         this.salaire = salaire;
     }
+    public Infirmier(String donnee)
+     {
+        super(donnee);
+        List<String> donneeList = Arrays.asList(donnee.split(","));
+        int pb = Integer.parseInt( donneeList.get(0));
+        this.nom = donneeList.get(1);
+        this.prenom = donneeList.get(2);
+        this.tel = donneeList.get(3);
+        this.adresse = donneeList.get(4);
+        this.salaire = Double.parseDouble( donneeList.get(5));
+        this.code_service =  donneeList.get(6);
+        this.rotation = donneeList.get(7);
+    }
+
     //methods
-    @Override
-    public String getAddRequest(String Table){
-        String Request = "insert into " + Table;
+    public String getAddRequest(){
+        String Request = "insert into infirmier values ";
         Request += "(";
         Request += Integer.toString(getNum_employe()) + ",'";
         Request += getNom() + "','";

@@ -6,6 +6,9 @@
 
 package projet.bdd.hopital.dataElements;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  *
  * @author Charles
@@ -49,10 +52,20 @@ public class Service extends DataElement {
         this.directeur = directeur;
     }
     //Constructor
-    Service(int code)
+    public Service(int code)
     {
     code_service = code;
     }
+    
+    public Service(String donnee)
+              {
+    List<String> donneeList = Arrays.asList(donnee.split(","));
+        this.code_service = Integer.parseInt( donneeList.get(0));
+        this.nom = donneeList.get(1);
+        this.batiment= donneeList.get(2);
+        this.directeur = donneeList.get(3);
+    }
+
     //Methods
     @Override
     public String getAddRequest(String Table){

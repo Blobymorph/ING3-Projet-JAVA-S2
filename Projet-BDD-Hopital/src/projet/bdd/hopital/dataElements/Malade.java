@@ -5,6 +5,9 @@
  */
 package projet.bdd.hopital.dataElements;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  *
  * @author thibault
@@ -66,10 +69,21 @@ public class Malade extends DataElement {
         this.mutuelle = mutuelle;
     }
     //Constructor
-    Malade(int num)
+    public Malade(int num)
     {
         numero_malade = num;
     }
+    public Malade(String donnee)
+    {   
+    List<String> donneeList = Arrays.asList(donnee.split(","));
+        this.numero_malade = Integer.parseInt( donneeList.get(0));
+        this.nom = donneeList.get(1);
+        this.prenom = donneeList.get(2);
+        this.tel = donneeList.get(3);
+        this.tel = donneeList.get(4);
+        this.mutuelle = donneeList.get(5);
+    }
+
     //Methods
     @Override
     public String getAddRequest(String Table){

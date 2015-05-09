@@ -5,6 +5,9 @@
  */
 package projet.bdd.hopital.dataElements;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  *
  * @author thibault
@@ -69,6 +72,18 @@ public class Employe extends DataElement {
         this.adresse = adresse;
         this.tel = tel;
     }
+    public Employe(String donnee)
+    {
+    List<String> donneeList = Arrays.asList(donnee.split(","));
+        this.num_employe = Integer.parseInt( donneeList.get(0));
+        this.nom = donneeList.get(1);
+        this.prenom = donneeList.get(2);
+        this.tel = donneeList.get(3);
+        this.adresse = donneeList.get(4);
+
+    }
+
+    
     //methods
     @Override
     public String getAddRequest(String Table){

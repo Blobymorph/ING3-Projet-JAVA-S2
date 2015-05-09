@@ -25,25 +25,28 @@ public class Docteur extends Employe {
     {
         super(num);
     }
-    /*public Docteur(int num, String nom, String prenom, String adresse, String tel){
-        this.num_employe = num_employe;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.adresse = adresse;
-        this.tel = tel;
-    }*/
+    public Docteur(int num, String specialite){
+        super(num);
+        this.specialite = specialite;
+    }
+    
+    public Docteur(int num, String nom, String prenom, String adresse, String tel, String specialite){
+        super(num,nom,prenom,adresse,tel);
+        this.specialite = specialite;
+    }
+    
     //methods
     @Override
     public String getAddRequest(String Table){
         String Request = "insert into " + Table;
         Request += "(";
-        Request += Integer.toString(getNum_employe()) + ',';
-        Request += getNom() + ',';
-        Request += getPrenom() + ',';
-        Request += getTel() + ',';
-        Request += getAdresse() + ',';
+        Request += Integer.toString(getNum_employe()) + ",'";
+        Request += getNom() + "','";
+        Request += getPrenom() + "','";
+        Request += getTel() + "','";
+        Request += getAdresse() + "','";
         Request += getSpecialite();
-        Request += ");";
+        Request += "');";
         return Request;
     }
 }

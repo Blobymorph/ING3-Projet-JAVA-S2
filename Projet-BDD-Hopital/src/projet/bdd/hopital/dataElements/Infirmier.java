@@ -11,11 +11,11 @@ package projet.bdd.hopital.dataElements;
  */
 public class Infirmier extends Employe {
    
-    private int code_service;
+    private String code_service;
     private String rotation;
     private double salaire;
 
-    public int getCode_service() {
+    public String getCode_service() {
         return code_service;
     }
 
@@ -23,7 +23,7 @@ public class Infirmier extends Employe {
         return salaire;
     }
 
-    public void setCode_service(int code_service) {
+    public void setCode_service(String code_service) {
         this.code_service = code_service;
     }
 
@@ -35,23 +35,31 @@ public class Infirmier extends Employe {
         this.rotation = rotation;
     }
     //construcor
-    Infirmier(int nume)
+    public Infirmier(int num)
     {
-        super(nume);
+        super(num);
+    }
+    
+    public Infirmier(int num, String nom, String prenom, String adresse, String tel,String code_service,String rotation,double salaire)
+    {
+        super(num,nom,prenom,adresse,tel);
+        this.code_service = code_service;
+        this.rotation = rotation;
+        this.salaire = salaire;
     }
     //methods
     @Override
     public String getAddRequest(String Table){
         String Request = "insert into " + Table;
         Request += "(";
-        Request += Integer.toString(getNum_employe()) + ',';
-        Request += getNom() + ',';
-        Request += getPrenom() + ',';
-        Request += getTel() + ',';
-        Request += getAdresse() + ',';
-        Request += Double.toString(getSalaire()) + ',';
-        Request += Integer.toString(getCode_service()) + ',';
-        Request += getRotation();
+        Request += Integer.toString(getNum_employe()) + ",'";
+        Request += getNom() + "','";
+        Request += getPrenom() + "','";
+        Request += getTel() + "','";
+        Request += getAdresse() + "','";
+        Request += getCode_service() + "','";
+        Request += getRotation() + "',";
+        Request += Double.toString(getSalaire());
         Request += ");";
         return Request;
     }

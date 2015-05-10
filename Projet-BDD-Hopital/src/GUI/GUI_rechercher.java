@@ -40,21 +40,32 @@ public class GUI_rechercher extends javax.swing.JFrame {
         rdbPatient = new javax.swing.JRadioButton();
         rdbImfirmier = new javax.swing.JRadioButton();
         rdbDocteur = new javax.swing.JRadioButton();
-        ckbService = new javax.swing.JCheckBox();
-        ckbSalaire = new javax.swing.JCheckBox();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        ckbRotation = new javax.swing.JCheckBox();
-        rdbRotJour = new javax.swing.JRadioButton();
-        rdbRotNuit = new javax.swing.JRadioButton();
-        ckbConditionSalaires = new javax.swing.JCheckBox();
-        rdbSalaireEgal = new javax.swing.JRadioButton();
-        rdbSalaireInf_à = new javax.swing.JRadioButton();
-        rdbSalaireSup_à = new javax.swing.JRadioButton();
-        txtValeurSalaeur = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox();
-        lblConditionService = new javax.swing.JLabel();
+        ckbPrenom = new javax.swing.JCheckBox();
+        txtPrenom = new javax.swing.JTextField();
+        txtMutuelle = new javax.swing.JTextField();
+        ckbMutuelle = new javax.swing.JCheckBox();
+        ckbTel = new javax.swing.JCheckBox();
+        txtTel = new javax.swing.JTextField();
+        ckbAdresse = new javax.swing.JCheckBox();
+        txtAdresse = new javax.swing.JTextField();
+        jComboBox2 = new javax.swing.JComboBox();
+        ckbNom5 = new javax.swing.JCheckBox();
+        ckbNom6 = new javax.swing.JCheckBox();
+        txtNom5 = new javax.swing.JTextField();
+        jComboBox3 = new javax.swing.JComboBox();
+        jComboBox4 = new javax.swing.JComboBox();
+        ckbNom8 = new javax.swing.JCheckBox();
+        ckbHospitalisation = new javax.swing.JCheckBox();
+        ckbSoigne = new javax.swing.JCheckBox();
+        ckbNom11 = new javax.swing.JCheckBox();
+        txtNom6 = new javax.swing.JTextField();
+        ckbNom12 = new javax.swing.JCheckBox();
+        txtNom7 = new javax.swing.JTextField();
+        ckbNom13 = new javax.swing.JCheckBox();
+        txtNom8 = new javax.swing.JTextField();
+        ckbNom9 = new javax.swing.JCheckBox();
+        txtMedecinTraitant = new javax.swing.JTextField();
+        ckbChambre = new javax.swing.JCheckBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAreaRecherche = new javax.swing.JTextArea();
         btnLancerRecherche = new javax.swing.JButton();
@@ -68,11 +79,16 @@ public class GUI_rechercher extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("Ce que l'on cherche ...");
+        jLabel1.setText("Paramètres de recherche");
 
-        ckbNom.setText("Le Nom");
+        ckbNom.setText("Nom");
 
-        txtNom.setText("Entrer le nom");
+        txtNom.setText("Entrer nom");
+        txtNom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(rdbEmployé);
         rdbEmployé.setText("Employé");
@@ -86,9 +102,132 @@ public class GUI_rechercher extends javax.swing.JFrame {
         buttonGroup1.add(rdbDocteur);
         rdbDocteur.setText("Docteur");
 
-        ckbService.setText("Le Service");
+        ckbPrenom.setText("Prenom");
+        ckbPrenom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckbPrenomActionPerformed(evt);
+            }
+        });
 
-        ckbSalaire.setText("le Salaire");
+        txtPrenom.setText("Entrer prenom");
+
+        txtMutuelle.setText("nom mutuelle");
+
+        ckbMutuelle.setText("Mutuelle");
+        ckbMutuelle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckbMutuelleActionPerformed(evt);
+            }
+        });
+
+        ckbTel.setText("Tel");
+        ckbTel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckbTelActionPerformed(evt);
+            }
+        });
+
+        txtTel.setText("entrez tel");
+
+        ckbAdresse.setText("Adresse");
+        ckbAdresse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckbAdresseActionPerformed(evt);
+            }
+        });
+
+        txtAdresse.setText("tout ou partie");
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jour", "Nuit" }));
+
+        ckbNom5.setText("Rotation");
+        ckbNom5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckbNom5ActionPerformed(evt);
+            }
+        });
+
+        ckbNom6.setText("Salaire");
+        ckbNom6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckbNom6ActionPerformed(evt);
+            }
+        });
+
+        txtNom5.setText("valeur (en €)");
+
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel(new String[] { ">", "<" }));
+
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Generaliste", "Anesthesiste", "Cardiologue", "Generaliste", "Orthopediste", "Pneumologue", "Radiologue", "Traumatologue" }));
+
+        ckbNom8.setText("Nom");
+        ckbNom8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckbNom8ActionPerformed(evt);
+            }
+        });
+
+        ckbHospitalisation.setText("Hospitalisations");
+        ckbHospitalisation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckbHospitalisationActionPerformed(evt);
+            }
+        });
+
+        ckbSoigne.setText("Médecin Traitant");
+        ckbSoigne.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckbSoigneActionPerformed(evt);
+            }
+        });
+
+        ckbNom11.setText("Service");
+        ckbNom11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckbNom11ActionPerformed(evt);
+            }
+        });
+
+        txtNom6.setText("nom service");
+
+        ckbNom12.setText("Batiment");
+        ckbNom12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckbNom12ActionPerformed(evt);
+            }
+        });
+
+        txtNom7.setText("nom batiment");
+
+        ckbNom13.setText("Directeur");
+        ckbNom13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckbNom13ActionPerformed(evt);
+            }
+        });
+
+        txtNom8.setText("numéro");
+
+        ckbNom9.setText("Spécialité");
+        ckbNom9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckbNom9ActionPerformed(evt);
+            }
+        });
+
+        txtMedecinTraitant.setText("nom médecin");
+        txtMedecinTraitant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMedecinTraitantActionPerformed(evt);
+            }
+        });
+
+        ckbChambre.setText("Infos Chambre");
+        ckbChambre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckbChambreActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -97,37 +236,134 @@ public class GUI_rechercher extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(ckbNom)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(ckbNom, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ckbPrenom, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ckbTel, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ckbAdresse))
                         .addGap(18, 18, 18)
-                        .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(rdbEmployé)
-                    .addComponent(rdbPatient)
-                    .addComponent(rdbImfirmier)
-                    .addComponent(ckbSalaire)
-                    .addComponent(ckbService)
-                    .addComponent(rdbDocteur))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtAdresse)
+                            .addComponent(txtTel)
+                            .addComponent(txtPrenom, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                            .addComponent(txtNom)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(rdbDocteur, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(rdbImfirmier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(rdbPatient)
+                                    .addComponent(rdbEmployé, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(10, 10, 10)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ckbNom5, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                    .addComponent(ckbNom9, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtNom8, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(ckbNom13)
+                                                .addComponent(ckbNom12, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(ckbNom11, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(ckbNom6, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(ckbNom8, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtNom6)
+                                        .addComponent(txtNom5)
+                                        .addComponent(txtNom7)
+                                        .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(ckbMutuelle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(ckbSoigne, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(ckbHospitalisation, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtMutuelle, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                                        .addComponent(txtMedecinTraitant))
+                                    .addComponent(ckbChambre, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(1, 1, 1)))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(ckbNom)
                     .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(rdbEmployé)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rdbPatient)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ckbPrenom)
+                    .addComponent(txtPrenom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rdbImfirmier)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ckbTel)
+                    .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rdbDocteur)
-                .addGap(18, 18, 18)
-                .addComponent(ckbSalaire)
-                .addGap(18, 18, 18)
-                .addComponent(ckbService)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAdresse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ckbAdresse))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtMutuelle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ckbMutuelle)
+                    .addComponent(rdbPatient))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ckbSoigne)
+                    .addComponent(txtMedecinTraitant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ckbHospitalisation)
+                    .addComponent(ckbChambre))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rdbEmployé)
+                    .addComponent(ckbNom5))
+                .addGap(4, 4, 4)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNom5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ckbNom6)
+                    .addComponent(rdbImfirmier))
+                .addGap(1, 1, 1)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNom6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ckbNom8)
+                    .addComponent(ckbNom11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ckbNom12)
+                    .addComponent(txtNom7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNom8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ckbNom13))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ckbNom9)
+                    .addComponent(rdbDocteur)
+                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -136,121 +372,25 @@ public class GUI_rechercher extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addContainerGap(40, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(153, 153, 153));
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setText("Les conditions de la recherche ...");
-
-        ckbRotation.setText("Choisisez la Rotation");
-
-        buttonGroup2.add(rdbRotJour);
-        rdbRotJour.setText("Jour");
-
-        buttonGroup2.add(rdbRotNuit);
-        rdbRotNuit.setText("Nuit");
-
-        ckbConditionSalaires.setText("Choisissez le Salaire");
-
-        rdbSalaireEgal.setText("=");
-
-        buttonGroup3.add(rdbSalaireInf_à);
-        rdbSalaireInf_à.setText("<");
-
-        buttonGroup3.add(rdbSalaireSup_à);
-        rdbSalaireSup_à.setText(">");
-
-        txtValeurSalaeur.setText("Salaire en euros");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "défaut", "Cardiologie", "Proctologie", "Réanimation", "Ophtalmologie", "Pneumologie" }));
-
-        lblConditionService.setText("Choisissez le Service");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblConditionService, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(txtValeurSalaeur, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ckbRotation)
-                            .addComponent(ckbConditionSalaires)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(rdbSalaireEgal)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(rdbSalaireInf_à)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(rdbSalaireSup_à))
-                                    .addComponent(rdbRotNuit)
-                                    .addComponent(rdbRotJour))))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(ckbRotation)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(rdbRotJour)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rdbRotNuit)
-                .addGap(18, 18, 18)
-                .addComponent(ckbConditionSalaires)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rdbSalaireEgal)
-                    .addComponent(rdbSalaireInf_à)
-                    .addComponent(rdbSalaireSup_à))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtValeurSalaeur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblConditionService, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(145, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 21, Short.MAX_VALUE))
-        );
+        jLabel1.getAccessibleContext().setAccessibleName("Paramètres de recherche");
 
         txtAreaRecherche.setColumns(20);
         txtAreaRecherche.setRows(5);
@@ -271,32 +411,29 @@ public class GUI_rechercher extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(20, 20, 20)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblRechercher, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addComponent(btnLancerRecherche, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblRechercher, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnLancerRecherche, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(34, 34, 34)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
                         .addComponent(lblRechercher, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(90, 90, 90)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnLancerRecherche, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1))
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -308,10 +445,75 @@ public class GUI_rechercher extends javax.swing.JFrame {
     private void btnLancerRechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLancerRechercheActionPerformed
         // TODO add your handling code here:
         
-        // ici il faut se connecter au module Connexion avec les parametres
-        
+        // On crée une requête SQL à partir des cases cochées
+        String Requete = null;
+        Requete += "Select ";
         
     }//GEN-LAST:event_btnLancerRechercheActionPerformed
+
+    private void ckbPrenomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbPrenomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ckbPrenomActionPerformed
+
+    private void txtNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomActionPerformed
+
+    private void ckbMutuelleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbMutuelleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ckbMutuelleActionPerformed
+
+    private void ckbTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbTelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ckbTelActionPerformed
+
+    private void ckbAdresseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbAdresseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ckbAdresseActionPerformed
+
+    private void ckbNom5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbNom5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ckbNom5ActionPerformed
+
+    private void ckbNom6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbNom6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ckbNom6ActionPerformed
+
+    private void ckbNom8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbNom8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ckbNom8ActionPerformed
+
+    private void ckbHospitalisationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbHospitalisationActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ckbHospitalisationActionPerformed
+
+    private void ckbSoigneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbSoigneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ckbSoigneActionPerformed
+
+    private void ckbNom11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbNom11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ckbNom11ActionPerformed
+
+    private void ckbNom12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbNom12ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ckbNom12ActionPerformed
+
+    private void ckbNom13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbNom13ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ckbNom13ActionPerformed
+
+    private void ckbNom9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbNom9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ckbNom9ActionPerformed
+
+    private void txtMedecinTraitantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMedecinTraitantActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMedecinTraitantActionPerformed
+
+    private void ckbChambreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbChambreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ckbChambreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -353,32 +555,43 @@ public class GUI_rechercher extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
-    private javax.swing.JCheckBox ckbConditionSalaires;
+    private javax.swing.JCheckBox ckbAdresse;
+    private javax.swing.JCheckBox ckbChambre;
+    private javax.swing.JCheckBox ckbHospitalisation;
+    private javax.swing.JCheckBox ckbMutuelle;
     private javax.swing.JCheckBox ckbNom;
-    private javax.swing.JCheckBox ckbRotation;
-    private javax.swing.JCheckBox ckbSalaire;
-    private javax.swing.JCheckBox ckbService;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JCheckBox ckbNom11;
+    private javax.swing.JCheckBox ckbNom12;
+    private javax.swing.JCheckBox ckbNom13;
+    private javax.swing.JCheckBox ckbNom5;
+    private javax.swing.JCheckBox ckbNom6;
+    private javax.swing.JCheckBox ckbNom8;
+    private javax.swing.JCheckBox ckbNom9;
+    private javax.swing.JCheckBox ckbPrenom;
+    private javax.swing.JCheckBox ckbSoigne;
+    private javax.swing.JCheckBox ckbTel;
+    private javax.swing.JComboBox jComboBox2;
+    private javax.swing.JComboBox jComboBox3;
+    private javax.swing.JComboBox jComboBox4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblConditionService;
     private javax.swing.JLabel lblRechercher;
     private javax.swing.JRadioButton rdbDocteur;
     private javax.swing.JRadioButton rdbEmployé;
     private javax.swing.JRadioButton rdbImfirmier;
     private javax.swing.JRadioButton rdbPatient;
-    private javax.swing.JRadioButton rdbRotJour;
-    private javax.swing.JRadioButton rdbRotNuit;
-    private javax.swing.JRadioButton rdbSalaireEgal;
-    private javax.swing.JRadioButton rdbSalaireInf_à;
-    private javax.swing.JRadioButton rdbSalaireSup_à;
+    private javax.swing.JTextField txtAdresse;
     private javax.swing.JTextArea txtAreaRecherche;
+    private javax.swing.JTextField txtMedecinTraitant;
+    private javax.swing.JTextField txtMutuelle;
     private javax.swing.JTextField txtNom;
-    private javax.swing.JTextField txtValeurSalaeur;
+    private javax.swing.JTextField txtNom5;
+    private javax.swing.JTextField txtNom6;
+    private javax.swing.JTextField txtNom7;
+    private javax.swing.JTextField txtNom8;
+    private javax.swing.JTextField txtPrenom;
+    private javax.swing.JTextField txtTel;
     // End of variables declaration//GEN-END:variables
 }

@@ -15,6 +15,7 @@ public class GUI_Hospital extends javax.swing.JFrame {
     /**
      * Creates new form GUI_Hospital
      */
+    
     public GUI_Hospital() {
         initComponents();
     }
@@ -116,20 +117,21 @@ public class GUI_Hospital extends javax.swing.JFrame {
 
     private void btnRechercherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRechercherActionPerformed
         // TODO add your handling code here:
-        
+        this.dispose();
         GUI_rechercher grech = new GUI_rechercher();
         grech.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_btnRechercherActionPerformed
 
     private void btnReportingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportingActionPerformed
         // TODO add your handling code here:
-        
+        this.dispose();
         GUI_reporting grep = new GUI_reporting();
         grep.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_btnReportingActionPerformed
 
     private void btnModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifierActionPerformed
         // TODO add your handling code here:
+        this.dispose();
         GUI_modifications gmod = new GUI_modifications();
         gmod.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_btnModifierActionPerformed
@@ -144,6 +146,7 @@ public class GUI_Hospital extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

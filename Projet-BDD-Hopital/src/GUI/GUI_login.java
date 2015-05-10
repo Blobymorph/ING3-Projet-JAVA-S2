@@ -23,6 +23,8 @@ public class GUI_login extends javax.swing.JFrame {
     /**
      * Creates new form GUI_login
      */
+    private Connexion C;
+    
     public GUI_login() {
         initComponents();
     }
@@ -54,11 +56,11 @@ public class GUI_login extends javax.swing.JFrame {
 
         lblIdCampus.setText("Identifiant Campus ECE");
 
-        txtIdCampus.setText("--");
+        txtIdCampus.setText("wickham");
 
         lblMdpCampus.setText("Mots de passe Campus ECE");
 
-        pswdMdpCampus.setText("jPasswordField1");
+        pswdMdpCampus.setText("49NS/yloP.");
         pswdMdpCampus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pswdMdpCampusActionPerformed(evt);
@@ -67,7 +69,7 @@ public class GUI_login extends javax.swing.JFrame {
 
         lblIdBdd.setText("Identifiant base de données (en rw c'est mieux)");
 
-        txtIdBdd.setText("--");
+        txtIdBdd.setText("wickham-rw");
         txtIdBdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdBddActionPerformed(evt);
@@ -76,7 +78,7 @@ public class GUI_login extends javax.swing.JFrame {
 
         lblMdpBdd.setText("Mot de passe Base de données");
 
-        pswdMdpBdd.setText("jPasswordField2");
+        pswdMdpBdd.setText("dfD2njT8");
         pswdMdpBdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pswdMdpBddActionPerformed(evt);
@@ -110,7 +112,7 @@ public class GUI_login extends javax.swing.JFrame {
                     .addComponent(lblIdCampus, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblMdpCampus, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pswdMdpCampus, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblIdBdd, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE))
+                    .addComponent(lblIdBdd, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 239, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
@@ -163,6 +165,8 @@ public class GUI_login extends javax.swing.JFrame {
     
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
+        
+        //Stockage des IDs en local (temporaire)
         PrintWriter writer;
         try {
             writer = new PrintWriter("password.txt", "UTF-8");
@@ -176,19 +180,21 @@ public class GUI_login extends javax.swing.JFrame {
         } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(GUI_login.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         // utiliser txtIdCampus pswdMdpCampus txtIdBdd pswdMdpBdd dans requete pour ce connecter à la bdd
-        //try {
-            //Connexion C = new Connexion("password.txt");
+        try {
+            C = new Connexion(txtIdCampus.getText(),pswdMdpCampus.getText(),txtIdBdd.getText(),pswdMdpBdd.getText());
             
             GUI_Hospital ghosto = new GUI_Hospital();
             this.dispose();
+            C.destroy();
             ghosto.setVisible(true);
-            
-        //} catch (SQLException ex) {
-        //    Logger.getLogger(GUI_login.class.getName()).log(Level.SEVERE, null, ex);
-        //} catch (ClassNotFoundException ex) {
-        //    Logger.getLogger(GUI_login.class.getName()).log(Level.SEVERE, null, ex);
-        //}
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI_login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUI_login.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**

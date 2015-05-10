@@ -25,6 +25,7 @@ public class Connexion {
     private Statement stmt;
     private ResultSet rset;
     private ResultSetMetaData rsetMeta;
+    private SSHTunnel ssh;
     /**
      * ArrayList public pour les requêtes de sélection
      */
@@ -41,10 +42,14 @@ public class Connexion {
         // chargement driver "com.mysql.jdbc.Driver"
         Class.forName("com.mysql.jdbc.Driver");
 
+        System.out.println("Connexion de base :");
+        System.out.println("Etape 1");
         // Connexion via le tunnel SSH avec le username et le password ECE
-        SSHTunnel ssh = new SSHTunnel(usernameECE, passwordECE);
-
+        ssh = new SSHTunnel(usernameECE, passwordECE);
+        
+        System.out.println("Etape 2");
         if (ssh.connect()) {
+            System.out.println("Etape 3");
             System.out.println("Connexion reussie");
 
             // url de connexion "jdbc:mysql://localhost:3305/usernameECE"
@@ -57,18 +62,22 @@ public class Connexion {
             stmt = conn.createStatement();
 
             // initialisation de la liste des requetes de selection et de MAJ
-            remplirRequetes();
-            remplirRequetesMaj();
+            //remplirRequetes();
+            //remplirRequetesMaj();
+            System.out.println("Etape 4");
         }
     }
     //Constructeur avec chargement depuis fichier
     public Connexion(String filename) throws SQLException, ClassNotFoundException {
         //chargement depuis le fichier
+        System.out.println("Connexion secondaire");
+        System.out.println("Etape 1");
         String usernameECE = new String();
         String passwordECE = new String();
         String loginDatabase = new String();
         String passwordDatabase = new String();
         try {
+            System.out.println("Etape 2 : ouverture du fichier");
             File myFile = new File(filename);
             FileReader fr = new FileReader(myFile);
             BufferedReader br = new BufferedReader(fr);
@@ -80,16 +89,18 @@ public class Connexion {
             loginDatabase = br.readLine();
             passwordDatabase = br.readLine();
             br.close();
+            System.out.println("Etape 3 : lecture du fichier terminé");
         }catch(IOException e){
             e.printStackTrace();
         }
         // chargement driver "com.mysql.jdbc.Driver"
         Class.forName("com.mysql.jdbc.Driver");
-
+        System.out.println("Etape 4");
         // Connexion via le tunnel SSH avec le username et le password ECE
-        SSHTunnel ssh = new SSHTunnel(usernameECE, passwordECE);
-
+        ssh = new SSHTunnel(usernameECE, passwordECE);
+        
         if (ssh.connect()) {
+            System.out.println("Etape 5");
             System.out.println("Connexion reussie");
 
             // url de connexion "jdbc:mysql://localhost:3305/usernameECE"
@@ -102,11 +113,13 @@ public class Connexion {
             stmt = conn.createStatement();
 
             // initialisation de la liste des requetes de selection et de MAJ
-            remplirRequetes();
-            remplirRequetesMaj();
+            //remplirRequetes();
+            //remplirRequetesMaj();
+            //ssh.disconnect();
+            System.out.println("Etape 6");
         }
     }
-
+    
     /**
      * Méthode privée qui ajoute la requete de selection en parametre dans son ArrayList
      */
@@ -219,5 +232,10 @@ public class Connexion {
      */
     public void executeUpdate(String requeteMaj) throws SQLException {
         stmt.executeUpdate(requeteMaj);
+    }
+    
+    public void destroy(){
+        System.out.println("Session disconnected.");
+        ssh.disconnect();
     }
 }

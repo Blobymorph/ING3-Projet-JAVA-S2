@@ -96,7 +96,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtIdCampus">
       <Properties>
-        <Property name="text" type="java.lang.String" value="--"/>
+        <Property name="text" type="java.lang.String" value="wickham"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblMdpCampus">
@@ -106,7 +106,7 @@
     </Component>
     <Component class="javax.swing.JPasswordField" name="pswdMdpCampus">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jPasswordField1"/>
+        <Property name="text" type="java.lang.String" value="49NS/yloP."/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pswdMdpCampusActionPerformed"/>
@@ -119,7 +119,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtIdBdd">
       <Properties>
-        <Property name="text" type="java.lang.String" value="--"/>
+        <Property name="text" type="java.lang.String" value="wickham-rw"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtIdBddActionPerformed"/>
@@ -132,7 +132,7 @@
     </Component>
     <Component class="javax.swing.JPasswordField" name="pswdMdpBdd">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jPasswordField2"/>
+        <Property name="text" type="java.lang.String" value="dfD2njT8"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pswdMdpBddActionPerformed"/>

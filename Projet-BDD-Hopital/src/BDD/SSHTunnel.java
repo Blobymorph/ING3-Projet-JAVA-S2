@@ -17,7 +17,8 @@ public class SSHTunnel {
     private int secondHostPort = 3305;
     private String username;
     private String password;
-
+    private Session session1;
+    
     /* ************************
      *       Constructors     *
      ************************ */
@@ -67,15 +68,15 @@ public class SSHTunnel {
         try {
             // Initialise la connexion
             JSch jsch = new JSch();
-            Session session = jsch.getSession(this.getUsername(), this.getFirstHost(), this.getFirstHostPort());
+            session1 = jsch.getSession(this.getUsername(), this.getFirstHost(), this.getFirstHostPort());
             // Automatiser la connexion (ne pas afficher d'interface pour rentrer les mots de passe)
-            session.setUserInfo(new SilentUserInfo(this.password));
+            session1.setUserInfo(new SilentUserInfo(this.password));
 
             // Etablissement du premier tunnel SSH
-            session.connect();
+            session1.connect();
 
             // Etablissement du second tunnel SSH (port forwarding with option -L)
-            int port = session.setPortForwardingL(this.getSecondHostPort(), this.getSecondHost(), this.getSecondHostPort());
+            int port = session1.setPortForwardingL(this.getSecondHostPort(), this.getSecondHost(), this.getSecondHostPort());
             //System.out.println("SSH connexion successful : localhost -> "+this.getFirstHost()+":"+this.getFirstHostPort()+" -> "+" "+port+":"+this.getSecondHost()+":"+this.getSecondHostPort());
             return true;
         } catch (Exception e) {
@@ -84,7 +85,11 @@ public class SSHTunnel {
 
         return false;
     }
-
+    
+    public void disconnect(){
+        session1.disconnect();
+    }
+    
     /* ************************
      *    Getters & Setters   *
      ************************ */

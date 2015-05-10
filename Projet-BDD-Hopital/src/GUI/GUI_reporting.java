@@ -7,10 +7,15 @@ package GUI;
 import BDD.*;
 import java.awt.BorderLayout;
 import java.awt.Container;
+import javax.sound.midi.MidiDevice.Info;
+import static javax.swing.GroupLayout.Alignment.CENTER;
+import javax.swing.JDialog;
 import javax.swing.JPanel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 /*
 import org.jfree.chart.ChartPanel;
@@ -143,28 +148,127 @@ public class GUI_reporting extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         // faire la requete sql et ranger les variables aux bon endroits
-        
-      
-            switch(action)
-            { 
-                case 1 : break;
-                //nombre d'employe par tranche de salaires
-                default: 
-                    panelHistogramme = new JPanel(new BorderLayout()); 
-                        setContentPane(panelHistogramme); 
-                        DefaultPieDataset pieDataset = new DefaultPieDataset();
-                        pieDataset.setValue("Valeur1", new Integer(27));
-                        pieDataset.setValue("Valeur2", new Integer(10));
-                        pieDataset.setValue("Valeur3", new Integer(50));
-                        pieDataset.setValue("Valeur4", new Integer(5));
-                        JFreeChart pieChart = ChartFactory.createPieChart("Test camembert",pieDataset, true, true, true);
-                        ChartPanel cPanel = new ChartPanel(pieChart);
-                        this.panelHistogramme.add(cPanel);
-                        this.panelHistogramme.setVisible(true);
+        JDialog reponse = new JDialog();
+        DefaultPieDataset pieDataset = new DefaultPieDataset();
+        final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+      String text=""; 
+        String Infox ="";
+        String Infoy ="";
+        switch(action)
+      {
+                case 1 : 
+              
+                        pieDataset.setValue("de 0 à 700", new Integer(27));
+                        pieDataset.setValue("de 701 à 1000", new Integer(10));
+                        pieDataset.setValue("de 1001 à 1300", new Integer(50));
+                        pieDataset.setValue("Plus de 1300", new Integer(5));
+                        text= "Nombre d'employés par tranche de salaire";
                         break;
-                       
-            }
-        
+              
+                case 2 : 
+                        pieDataset.setValue("REA", new Integer(27));
+                        pieDataset.setValue("CHG", new Integer(10));
+                        pieDataset.setValue("CAR", new Integer(50));  
+                        text= "Nombre d'employés par service";
+                        break;
+                case 3 : 
+                        pieDataset.setValue("Anesthesiste", new Integer(27));
+                        pieDataset.setValue("Cardiologue", new Integer(10));
+                        pieDataset.setValue("Generaliste", new Integer(50));
+                        pieDataset.setValue("Orthopediste", new Integer(27));
+                        pieDataset.setValue("Pneumologue", new Integer(10));
+                        pieDataset.setValue("Radiologue", new Integer(50));
+                        pieDataset.setValue("Traumatologue", new Integer(50));
+                        text= "Nombre d'employés par spécialité";
+                        break;
+                case 4 : 
+                        pieDataset.setValue("Jour", new Integer(27));
+                        pieDataset.setValue("Nuit", new Integer(10));  
+                        text= "Nombre d'employés par rotation";
+                        break;
+                    /// diagramme en barre
+                case 5 : 
+                 //dataset.addValue(WIDTH, WIDTH, action);
+                        pieDataset.setValue("Moyenne pour REA", new Integer(27));
+                        pieDataset.setValue("Moyenne pour CHG", new Integer(10)); 
+                        pieDataset.setValue("Moyenne pour CAR", new Integer(10));  
+                        break;
+                
+                case 6 : 
+                   
+/////noms
+                        final String Anesthesiste = "Anesthesiste";        
+                        final String Cardiologue = "Cardiologue";        
+                        final String Generaliste = "Generaliste";    
+                        final String Orthopediste = "Orthopediste";        
+                        final String Pneumologue = "Pneumologue";        
+                        final String Traumatologue = "Traumatologue";
+                        final String salaire = "salaire";        
+                        Infox = "specialité";
+                        Infoy = "salaire";
+                        text = "Moyenne des salaires des medecins par spécialité";
+                    
+/// init
+                        dataset.addValue( 1.0 , salaire , Anesthesiste );        
+                        dataset.addValue( 3.0 , salaire , Cardiologue );        
+                        dataset.addValue( 5.0 , salaire , Generaliste ); 
+                        dataset.addValue( 5.0 , salaire, Orthopediste );           
+                        dataset.addValue( 5.0 , salaire, Pneumologue );        
+                        dataset.addValue( 6.0 , salaire , Traumatologue );       
+                           
+                  ////////////////////                  
+                     
+                case 7 : 
+                    
+                    final String salaires = "Salaire";        
+                        final String doc = "Docteur";        
+                        final String inf = "Infirmier";        
+                        final String aut = "Autre";        
+                        dataset.addValue( 1.0 , salaires , doc);        
+                        dataset.addValue( 3.0 , salaires , inf );        
+                        dataset.addValue( 5.0 , salaires ,  aut ); 
+                        Infox= "Metier"; 
+                        Infoy= "Salaire";
+                        text = "Nombre de malade par service";
+                  
+                    break;
+                case 8 :
+                        final String malade = "Malade";        
+                        final String rea = "REA";        
+                        final String chg = "CHG";        
+                        final String car = "CAR";        
+                        dataset.addValue( 1.0 , malade , rea);        
+                        dataset.addValue( 3.0 , malade , chg );        
+                        dataset.addValue( 5.0 , malade ,  car ); 
+                        Infox= "Service"; 
+                        Infoy= "Nombre de malades";
+                        text = "Nombre de malade par service";
+                        
+                        
+                    break; 
+              
+              
+            
+      }
+        // Piechart
+        if(action>0&&action<5){
+                final JFreeChart pieChart = ChartFactory.createPieChart(text, pieDataset, true, false, false);
+                final ChartPanel cPanel = new ChartPanel(pieChart);
+                reponse.add(cPanel);
+                 reponse.pack();
+                //panelHistogramme.pack();
+                reponse.setVisible(true);
+        }
+        //Histogramme
+         if(action>4&&action<12){
+             
+            final JFreeChart barChart = ChartFactory.createBarChart(text,Infox , Infoy ,dataset, PlotOrientation.VERTICAL, true, true, false);
+            final ChartPanel cPanel = new ChartPanel(barChart);
+               reponse.add(cPanel);
+                 reponse.pack();
+                //panelHistogramme.pack();
+                reponse.setVisible(true);
+         }
     
         
         

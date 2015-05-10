@@ -61,7 +61,7 @@ public class GUI_reporting extends javax.swing.JFrame {
         lblReporting.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         lblReporting.setText("Reporting");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Choisir une population", "Nombre d'employé par tranches de salaires", "Nombre d'employé par sevice", "Nombre d'employé par spécialité", "Nombre d'employé par rotation", "Salaire des employés par service", "Salaire des employés par spécialité", "Salaire des employés par métier", "Nombre de malades par service", "Nombre de malades par mutuelle", "Nombre de chambres par service" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Choisir une population", "Nombre d'employé par tranches de salaires", "Nombre d'employé par service", "Nombre d'employé par spécialité", "Nombre d'employé par rotation", "Salaire des employés par service", "Salaire des employés par spécialité", "Salaire des employés par métier", "Nombre de malades par service", "Nombre de malades par mutuelle", "Nombre de chambres par service" }));
         jComboBox1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jComboBox1ItemStateChanged(evt);
@@ -192,9 +192,10 @@ public class GUI_reporting extends javax.swing.JFrame {
                     /// diagrammes en barre/////////////////////////////
                 case 5 : 
                  //dataset.addValue(WIDTH, WIDTH, action);
-                        pieDataset.setValue("Moyenne pour REA", new Integer(27));
-                        pieDataset.setValue("Moyenne pour CHG", new Integer(10)); 
-                        pieDataset.setValue("Moyenne pour CAR", new Integer(10));  
+                        pieDataset.setValue("Moyenne pour REA", getSalaireParService(1));
+                        pieDataset.setValue("Moyenne pour CHG", getSalaireParService(2)); 
+                        pieDataset.setValue("Moyenne pour CAR", getSalaireParService(3));  
+                        text = "Salaire moyen par service";
                         break;
                 
                 case 6 : 
@@ -204,7 +205,8 @@ public class GUI_reporting extends javax.swing.JFrame {
                         final String Cardiologue = "Cardiologue";        
                         final String Generaliste = "Generaliste";    
                         final String Orthopediste = "Orthopediste";        
-                        final String Pneumologue = "Pneumologue";        
+                        final String Pneumologue = "Pneumologue";  
+                        final String Radiologue = "Radiologue";
                         final String Traumatologue = "Traumatologue";
                         final String salaire = "salaire";        
                         Infox = "specialité";
@@ -212,12 +214,13 @@ public class GUI_reporting extends javax.swing.JFrame {
                         text = "Moyenne des salaires des medecins par spécialité";
                     
 /// init
-                        dataset.addValue( 1.0 , salaire , Anesthesiste );        
-                        dataset.addValue( 3.0 , salaire , Cardiologue );        
-                        dataset.addValue( 5.0 , salaire , Generaliste ); 
-                        dataset.addValue( 5.0 , salaire, Orthopediste );           
-                        dataset.addValue( 5.0 , salaire, Pneumologue );        
-                        dataset.addValue( 6.0 , salaire , Traumatologue );       
+                        dataset.addValue( getSalaireParSpecialite(1), salaire , Anesthesiste );        
+                        dataset.addValue( getSalaireParSpecialite(2), salaire , Cardiologue );        
+                        dataset.addValue( getSalaireParSpecialite(3) , salaire , Generaliste ); 
+                        dataset.addValue( getSalaireParSpecialite(4) , salaire, Orthopediste );           
+                        dataset.addValue( getSalaireParSpecialite(5) , salaire, Pneumologue ); 
+                         dataset.addValue(getSalaireParSpecialite(6) , salaire, Radiologue ); 
+                        dataset.addValue( getSalaireParSpecialite(7) , salaire , Traumatologue );       
                            break;
                   ////////////////////                  
                      
@@ -227,12 +230,12 @@ public class GUI_reporting extends javax.swing.JFrame {
                         final String doc = "Docteur";        
                         final String inf = "Infirmier";        
                         final String aut = "Autre";        
-                        dataset.addValue( 1.0 , salaires , doc);        
-                        dataset.addValue( 3.0 , salaires , inf );        
-                        dataset.addValue( 5.0 , salaires ,  aut ); 
+                        dataset.addValue( getSalaireParMetier(1) , salaires , doc);        
+                        dataset.addValue( getSalaireParMetier(2) , salaires , inf );        
+                        dataset.addValue( getSalaireParMetier(3) , salaires ,  aut ); 
                         Infox= "Metier"; 
                         Infoy= "Salaire";
-                        text = "Nombre de malade par service";
+                        text = "Salaire par metier";
                   
                     break;
                 case 8 :
@@ -241,9 +244,9 @@ public class GUI_reporting extends javax.swing.JFrame {
                         final String rea = "REA";        
                         final String chg = "CHG";        
                         final String car = "CAR";        
-                        dataset.addValue( 1.0 , malade , rea);        
-                        dataset.addValue( 3.0 , malade , chg );        
-                        dataset.addValue( 5.0 , malade ,  car ); 
+                        dataset.addValue( getMaladeParService(1) , malade , rea);        
+                        dataset.addValue( getMaladeParService(2), malade , chg );        
+                        dataset.addValue( getMaladeParService(3), malade ,  car ); 
                         Infox= "Service"; 
                         Infoy= "Nombre de malades";
                         text = "Nombre de malade par service";
@@ -268,18 +271,18 @@ public class GUI_reporting extends javax.swing.JFrame {
                     
 //                      / init
                     
-                        dataset.addValue( 1.0 , salaire0 , MAAF );        
-                        dataset.addValue( 3.0 , salaire0 , MNAM );        
-                        dataset.addValue( 5.0 , salaire0 , LMDE); 
-                        dataset.addValue( 5.0 , salaire0, MNH );           
-                        dataset.addValue( 5.0 , salaire0, MGEN );        
-                        dataset.addValue( 6.0 , salaire0 , MMA ); 
-                        dataset.addValue( 1.0 , salaire0 , CNAMTS );        
-                        dataset.addValue( 3.0 , salaire0 , CCVRP );        
-                        dataset.addValue( 5.0 , salaire0 , MAS ); 
-                        dataset.addValue( 5.0 , salaire0, AG2R );           
-                        dataset.addValue( 5.0 , salaire0, MNFTC );        
-                        dataset.addValue( 6.0 , salaire0 , MGSP );       
+                        dataset.addValue( getMaladeParMutuelle(1), salaire0 , MAAF );        
+                        dataset.addValue( getMaladeParMutuelle(2) , salaire0 , MNAM );        
+                        dataset.addValue( getMaladeParMutuelle(3) , salaire0 , LMDE); 
+                        dataset.addValue( getMaladeParMutuelle(4) , salaire0, MNH );           
+                        dataset.addValue( getMaladeParMutuelle(5) , salaire0, MGEN );        
+                        dataset.addValue( getMaladeParMutuelle(6) , salaire0 , MMA ); 
+                        dataset.addValue( getMaladeParMutuelle(7) , salaire0 , CNAMTS );        
+                        dataset.addValue( getMaladeParMutuelle(8) , salaire0 , CCVRP );        
+                        dataset.addValue( getMaladeParMutuelle(9) , salaire0 , MAS ); 
+                        dataset.addValue( getMaladeParMutuelle(10) , salaire0, AG2R );           
+                        dataset.addValue( getMaladeParMutuelle(11) , salaire0, MNFTC );        
+                        dataset.addValue( getMaladeParMutuelle(12) , salaire0 , MGSP );       
                            break;
                     
                 case 10 :
@@ -384,17 +387,19 @@ public class GUI_reporting extends javax.swing.JFrame {
     int value=0; 
     switch(num_spe)
             {
-                case 1: specialite="Cardiologue";
+                case 1 : specialite ="Anesthesiste";
                     break;
-                case 2: specialite="Generaliste";
+                case 2: specialite="Cardiologue";
                     break;
-                case 3: specialite="Orthopediste";
+                case 3: specialite="Generaliste";
                     break;
-                case 4: specialite="Pneumologue";
+                case 4: specialite="Orthopediste";
                     break;
-                case 5: specialite="Radiologue";
+                case 5: specialite="Pneumologue";
                     break;
-                case 6: specialite="Traumatologue";
+                case 6: specialite="Radiologue";
+                    break;
+                case 7: specialite="Traumatologue";
                   break;
             }
    
@@ -416,8 +421,136 @@ public class GUI_reporting extends javax.swing.JFrame {
     
     return value;
     }
+      //demande la moyenne de salaire par service
+      int getSalaireParService(int num_service)
+    {
+    String service="";
+    int value=0; 
+    //recuperation des donnee
+        switch(num_service)
+            {
+                case 1: service="REA";
+                    break;
+                case 2: service="CHG";
+                    break;
+                case 3: service="CAR";
+                    break;
+        }
+        return value;
+    }
+      //demande le salaire moyen par profession
+      int getSalaireParSpecialite(int num_spe)
+    {
+        String specialite="";
+    int value=0; 
+    switch(num_spe)
+            {
+                case 1 : specialite ="Anesthesiste";
+                    break;
+                case 2: specialite="Cardiologue";
+                    break;
+                case 3: specialite="Generaliste";
+                    break;
+                case 4: specialite="Orthopediste";
+                    break;
+                case 5: specialite="Pneumologue";
+                    break;
+                case 6: specialite="Radiologue";
+                    break;
+                case 7: specialite="Traumatologue";
+                  break;
+            }
+   
     
-    
+    return value;
+    }
+      //demande le samaire moyen par metier
+       int getSalaireParMetier(int met)
+    {
+    String service;
+    int value=0; 
+    //recuperation des donnee
+        switch(met)
+            {
+                case 1: service="Docteur";
+                    break;
+                case 2: service="Infirmier";
+                    break;
+                case 3: service="autres";
+                    break;
+        }
+        return value;
+    }
+       //demande le nombre de malades par service
+       int getMaladeParService(int num_service)
+    {
+    String service;
+    int value=0; 
+    //recuperation des donnee
+        switch(num_service)
+            {
+                case 1: service="REA";
+                    break;
+                case 2: service="CHG";
+                    break;
+                case 3: service="CAR";
+                    break;
+        }
+        return value;
+    }
+       
+       //demande le nombre de chambre du service
+       int getChambreParService(int num_service)
+    {
+    String service;
+    int value=0; 
+    //recuperation des donnee
+        switch(num_service)
+            {
+                case 1: service="REA";
+                    break;
+                case 2: service="CHG";
+                    break;
+                case 3: service="CAR";
+                    break;
+        }
+        return value;
+    }
+       //retourne le nombre de patients par mutuelle
+       int getMaladeParMutuelle(int num_mut)
+    {
+        String specialite="";
+    int value=0; 
+    switch(num_mut)
+            {
+                case 1 : specialite ="MAAF";
+                    break;
+                case 2 : specialite ="MNAM";
+                    break;
+                case 3: specialite="LMDE";
+                    break;
+                case 4: specialite="MNH";
+                    break;
+                case 5: specialite="MGEN";
+                    break;
+                case 6: specialite="MMA";
+                    break;
+                case 7: specialite="CNAMTS";
+                    break;
+                case 8: specialite="CCVRP";
+                    break;
+                case 9: specialite="MAS";
+                    break;
+                case 10: specialite="AG2R";
+                    break;
+                case 11: specialite="MNFTC";
+                    break;
+                case 12: specialite="MGSP";
+                  break;          
+            }
+ 
+    return value;
+    }
     
     
     

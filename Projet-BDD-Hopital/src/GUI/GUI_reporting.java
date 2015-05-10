@@ -155,38 +155,41 @@ public class GUI_reporting extends javax.swing.JFrame {
         String Infox ="";
         String Infoy ="";
         switch(action)
-      {
+      {//////////////////:Pie charts//////////////////////////////////////
                 case 1 : 
-              
-                        pieDataset.setValue("de 0 à 700", new Integer(27));
-                        pieDataset.setValue("de 701 à 1000", new Integer(10));
-                        pieDataset.setValue("de 1001 à 1300", new Integer(50));
-                        pieDataset.setValue("Plus de 1300", new Integer(5));
+                        //set values
+                        pieDataset.setValue("de 0 à 700", getEmployeParSalaire(1));
+                        pieDataset.setValue("de 701 à 1000",getEmployeParSalaire(2));
+                        pieDataset.setValue("de 1001 à 1300", getEmployeParSalaire(3));
+                        pieDataset.setValue("Plus de 1300", getEmployeParSalaire(4));
                         text= "Nombre d'employés par tranche de salaire";
                         break;
               
                 case 2 : 
-                        pieDataset.setValue("REA", new Integer(27));
-                        pieDataset.setValue("CHG", new Integer(10));
-                        pieDataset.setValue("CAR", new Integer(50));  
+                        //set values
+                        pieDataset.setValue("REA", getEmployeParService(1));
+                        pieDataset.setValue("CHG", getEmployeParService(2));
+                        pieDataset.setValue("CAR", getEmployeParService(3));  
                         text= "Nombre d'employés par service";
                         break;
                 case 3 : 
-                        pieDataset.setValue("Anesthesiste", new Integer(27));
-                        pieDataset.setValue("Cardiologue", new Integer(10));
-                        pieDataset.setValue("Generaliste", new Integer(50));
-                        pieDataset.setValue("Orthopediste", new Integer(27));
-                        pieDataset.setValue("Pneumologue", new Integer(10));
-                        pieDataset.setValue("Radiologue", new Integer(50));
-                        pieDataset.setValue("Traumatologue", new Integer(50));
+                        //set values
+                        pieDataset.setValue("Anesthesiste", getEmployeParSpecialite(1));
+                        pieDataset.setValue("Cardiologue", getEmployeParSpecialite(2));
+                        pieDataset.setValue("Generaliste", getEmployeParSpecialite(3));
+                        pieDataset.setValue("Orthopediste", getEmployeParSpecialite(4));
+                        pieDataset.setValue("Pneumologue", getEmployeParSpecialite(5));
+                        pieDataset.setValue("Radiologue", getEmployeParSpecialite(6));
+                        pieDataset.setValue("Traumatologue", getEmployeParSpecialite(7));
                         text= "Nombre d'employés par spécialité";
                         break;
                 case 4 : 
-                        pieDataset.setValue("Jour", new Integer(27));
-                        pieDataset.setValue("Nuit", new Integer(10));  
+                        //set values
+                        pieDataset.setValue("Jour", getEmployeRotation(1));
+                        pieDataset.setValue("Nuit", getEmployeRotation(2));  
                         text= "Nombre d'employés par rotation";
                         break;
-                    /// diagramme en barre
+                    /// diagrammes en barre/////////////////////////////
                 case 5 : 
                  //dataset.addValue(WIDTH, WIDTH, action);
                         pieDataset.setValue("Moyenne pour REA", new Integer(27));
@@ -195,7 +198,7 @@ public class GUI_reporting extends javax.swing.JFrame {
                         break;
                 
                 case 6 : 
-                   
+                   //set values
 /////noms
                         final String Anesthesiste = "Anesthesiste";        
                         final String Cardiologue = "Cardiologue";        
@@ -219,7 +222,7 @@ public class GUI_reporting extends javax.swing.JFrame {
                   ////////////////////                  
                      
                 case 7 : 
-                    
+                    //set values
                     final String salaires = "Salaire";        
                         final String doc = "Docteur";        
                         final String inf = "Infirmier";        
@@ -233,6 +236,7 @@ public class GUI_reporting extends javax.swing.JFrame {
                   
                     break;
                 case 8 :
+                        //set values
                         final String malade = "Malade";        
                         final String rea = "REA";        
                         final String chg = "CHG";        
@@ -243,9 +247,59 @@ public class GUI_reporting extends javax.swing.JFrame {
                         Infox= "Service"; 
                         Infoy= "Nombre de malades";
                         text = "Nombre de malade par service";
+                case 9 : 
+                        //set values
+                        final String MAAF = "MAAF";        
+                        final String MNAM = "MNAM";        
+                        final String LMDE = "LMDE";    
+                        final String MNH = "MNH";        
+                        final String MGEN = "MGEN";        
+                        final String MMA = "MMA";
+                        final String CNAMTS = "CNAMTS";        
+                        final String CCVRP = "CCVRP";        
+                        final String MAS = "MAS";    
+                        final String AG2R = "AG2R";        
+                        final String MNFTC = "MNFTC";        
+                        final String MGSP = "MGSP";
+                        final String salaire0 = "salaire";        
+                        Infox = "Mutuelle";
+                        Infoy = "Malades";
+                        text = "Nombre de malades par mutuelle";
+                    
+//                      / init
+                    
+                        dataset.addValue( 1.0 , salaire0 , MAAF );        
+                        dataset.addValue( 3.0 , salaire0 , MNAM );        
+                        dataset.addValue( 5.0 , salaire0 , LMDE); 
+                        dataset.addValue( 5.0 , salaire0, MNH );           
+                        dataset.addValue( 5.0 , salaire0, MGEN );        
+                        dataset.addValue( 6.0 , salaire0 , MMA ); 
+                        dataset.addValue( 1.0 , salaire0 , CNAMTS );        
+                        dataset.addValue( 3.0 , salaire0 , CCVRP );        
+                        dataset.addValue( 5.0 , salaire0 , MAS ); 
+                        dataset.addValue( 5.0 , salaire0, AG2R );           
+                        dataset.addValue( 5.0 , salaire0, MNFTC );        
+                        dataset.addValue( 6.0 , salaire0 , MGSP );       
+                           break;
+                    
+                case 10 :
+                        //set values
+                        final String malades = "Chambre";        
+                        final String reas = "REA";        
+                        final String chgs = "CHG";        
+                        final String cars = "CAR";        
+                        dataset.addValue( 1.0 , malades , reas);        
+                        dataset.addValue( 3.0 , malades , chgs );        
+                        dataset.addValue( 5.0 , malades ,  cars ); 
+                        Infox= "Service"; 
+                        Infoy= "Nombre de chambre";
+                        text = "Nombre de chambre par service";
+                    break;
+                default : 
+                    break;
+                    
                         
-                        
-                    break; 
+                 
               
               
             
@@ -260,7 +314,7 @@ public class GUI_reporting extends javax.swing.JFrame {
                 reponse.setVisible(true);
         }
         //Histogramme
-         if(action>4&&action<12){
+         if(action>4&&action<11){
              
             final JFreeChart barChart = ChartFactory.createBarChart(text,Infox , Infoy ,dataset, PlotOrientation.VERTICAL, true, true, false);
             final ChartPanel cPanel = new ChartPanel(barChart);
@@ -285,6 +339,88 @@ public class GUI_reporting extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnLancerStatActionPerformed
 
+    //demande le nombre de salarié par tranche
+    int getEmployeParSalaire(int tranche)
+    {
+        int value=0; 
+        int min,max;
+        //recuperation des bornes
+            switch(tranche)
+            {
+                case 1: min=0;max=700;
+                    break;
+                case 2: min=701;max=1000;
+                    break;
+                case 3: min = 1001; max=1300;
+                    break;
+                case 4: min = 1300; max =200000;
+            }
+            //connexion
+            
+            
+    return value;
+    }
+    //demande le nom d'employé par service
+    int getEmployeParService(int num_service)
+    {
+    String service;
+    int value=0; 
+    //recuperation des donnee
+        switch(num_service)
+            {
+                case 1: service="REA";
+                    break;
+                case 2: service="CHG";
+                    break;
+                case 3: service="CAR";
+                    break;
+        }
+        return value;
+    }
+    //demande le nombre d'employés par spécialité
+     int getEmployeParSpecialite(int num_spe)
+    {
+        String specialite="";
+    int value=0; 
+    switch(num_spe)
+            {
+                case 1: specialite="Cardiologue";
+                    break;
+                case 2: specialite="Generaliste";
+                    break;
+                case 3: specialite="Orthopediste";
+                    break;
+                case 4: specialite="Pneumologue";
+                    break;
+                case 5: specialite="Radiologue";
+                    break;
+                case 6: specialite="Traumatologue";
+                  break;
+            }
+   
+    
+    return value;
+    }
+     //demande le d'employé par rotation
+      int getEmployeRotation(int Day)
+       {
+        String Periode="";
+    int value=0; 
+    switch(Day)
+            {
+                case 1: Periode="JOUR";
+                    break;
+                case 2: Periode="NUIT";
+                    break;
+            }
+    
+    return value;
+    }
+    
+    
+    
+    
+    
     private void btnHistoriqueRequetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoriqueRequetesActionPerformed
         // TODO add your handling code here:
         

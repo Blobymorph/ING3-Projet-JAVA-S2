@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 
-package projet.bdd.hopital;
-import projet.bdd.hopital.dataElements.*;
+package Main;
+import dataElements.*;
 
 /**
  *

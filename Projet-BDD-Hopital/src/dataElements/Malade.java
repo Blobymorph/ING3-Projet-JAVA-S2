@@ -3,25 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package projet.bdd.hopital.dataElements;
+package dataElements;
 
 /**
  *
  * @author thibault
  */
-public class Employe extends DataElement {
-    private int num_employe;
-    protected String nom;
-    protected String prenom;
-    protected String tel;
-    protected String adresse;
+public class Malade extends DataElement {
+    //specific data
+    private int numero_malade;
+    private String nom;
+    private String prenom;
+    private String tel;
+    private String adresse;
+    private String mutuelle;
 
-    public int getNum_employe() {
-        return num_employe;
+    public int getNumero_malade() {
+        return numero_malade;
     }
 
-    public void setNum_employe(int num_employe) {
-        this.num_employe = num_employe;
+    public void setNumero_malade(int numero_malade) {
+        this.numero_malade = numero_malade;
     }
 
     public String getNom() {
@@ -55,30 +57,38 @@ public class Employe extends DataElement {
     public void setAdresse(String adresse) {
         this.adresse = adresse;
     }
-    //constructor
-    public Employe(int num_employe)
-    {
-        this.num_employe = num_employe;
+
+    public String getMutuelle() {
+        return mutuelle;
     }
-    
-    public Employe(int num_employe, String nom, String prenom, String adresse, String tel)
+
+    public void setMutuelle(String mutuelle) {
+        this.mutuelle = mutuelle;
+    }
+    //Constructor
+    public Malade(int numero_malade)
     {
-        this.num_employe = num_employe;
+        this.numero_malade = numero_malade;
+    }
+    public Malade(int num,String nom,String prenom,String adresse,String tel,String mutuelle){
+        this.numero_malade = numero_malade;
         this.nom = nom;
         this.prenom = prenom;
         this.adresse = adresse;
         this.tel = tel;
+        this.mutuelle = mutuelle;
     }
-    //methods
+    //Methods
     @Override
     public String getAddRequest(){
-        String Request = "insert into employe values ";
-        Request += "(";
-        Request += Integer.toString(getNum_employe()) + ",'";
+        String Request = "insert into malade values ";
+        Request += "('";
+        Request += Integer.toString(getNumero_malade()) + "','";
         Request += getNom() + "','";
         Request += getPrenom() + "','";
         Request += getTel() + "','";
-        Request += getAdresse();
+        Request += getAdresse() + "','";
+        Request += getMutuelle();
         Request += "');";
         return Request;
     }

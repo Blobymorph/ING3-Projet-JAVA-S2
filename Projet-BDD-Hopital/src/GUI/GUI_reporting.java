@@ -291,9 +291,9 @@ public class GUI_reporting extends javax.swing.JFrame {
                         final String reas = "REA";        
                         final String chgs = "CHG";        
                         final String cars = "CAR";        
-                        dataset.addValue( 1.0 , malades , reas);        
-                        dataset.addValue( 3.0 , malades , chgs );        
-                        dataset.addValue( 5.0 , malades ,  cars ); 
+                        dataset.addValue( getChambreParService(1) , malades , reas);        
+                        dataset.addValue( getChambreParService(2), malades , chgs );        
+                        dataset.addValue( getChambreParService(3) , malades ,  cars ); 
                         Infox= "Service"; 
                         Infoy= "Nombre de chambre";
                         text = "Nombre de chambre par service";

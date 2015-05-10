@@ -31,25 +31,21 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="lblRechercher" pref="262" max="32767" attributes="0"/>
-                          <Component id="jScrollPane1" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" min="-2" pref="301" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblRechercher" min="-2" pref="230" max="-2" attributes="0"/>
+                          <Component id="btnLancerRecherche" min="-2" pref="230" max="-2" attributes="0"/>
                       </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-                      <Component id="btnLancerRecherche" min="-2" pref="175" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jPanel3" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -58,12 +54,12 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel3" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                       <Component id="lblRechercher" min="-2" pref="68" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnLancerRecherche" min="-2" pref="49" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jScrollPane1" max="32767" attributes="0"/>
                   </Group>
                   <Component id="jPanel1" max="32767" attributes="0"/>
@@ -96,12 +92,17 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jPanel2" max="32767" attributes="0"/>
-                      <Component id="jLabel1" max="32767" attributes="0"/>
+                  <EmptySpace pref="35" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel1" min="-2" pref="463" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -122,8 +123,11 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ce que l&apos;on cherche ..."/>
+            <Property name="text" type="java.lang.String" value="Param&#xe8;tres de recherche"/>
           </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Param&#xe8;tres de recherche"/>
+          </AccessibilityProperties>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel2">
 
@@ -133,42 +137,184 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="ckbNom" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="ckbNom" min="-2" pref="75" max="-2" attributes="0"/>
+                                  <Component id="ckbPrenom" alignment="1" min="-2" pref="75" max="-2" attributes="0"/>
+                                  <Component id="ckbTel" alignment="1" min="-2" pref="75" max="-2" attributes="0"/>
+                                  <Component id="ckbAdresse" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="txtNom" min="-2" pref="105" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtAdresse" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtTel" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtPrenom" alignment="0" pref="228" max="32767" attributes="0"/>
+                                  <Component id="txtNom" alignment="0" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Component id="rdbEmployé" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="rdbPatient" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="rdbImfirmier" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="ckbSalaire" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="ckbService" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="rdbDocteur" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="rdbDocteur" min="-2" pref="87" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="rdbInfirmier" max="32767" attributes="0"/>
+                                          <Component id="rdbMalade" min="-2" max="-2" attributes="0"/>
+                                          <Component id="rdbEmploye" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="ckbMutuelle" max="32767" attributes="0"/>
+                                              <Component id="ckbMedecinTraitant" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Component id="ckbHospitalisation" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="txtMutuelle" pref="125" max="32767" attributes="0"/>
+                                              <Component id="txtMedecinTraitant" alignment="0" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Component id="ckbChambre" min="-2" pref="128" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="ckbSalaire" min="-2" pref="77" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="cbSupInf" min="-2" pref="57" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="txtValSalaire" min="-2" pref="85" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                          <Component id="cbSpecialite" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="ckbDirecteur" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="txtNumDirecteur" min="-2" pref="85" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                          <Group type="102" attributes="0">
+                                                              <Component id="ckbSpecialite" min="-2" pref="100" max="-2" attributes="0"/>
+                                                              <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                                                          </Group>
+                                                          <Component id="ckbNomBatiment" alignment="1" min="-2" pref="80" max="-2" attributes="0"/>
+                                                          <Group type="102" alignment="1" attributes="0">
+                                                              <Component id="ckbService" min="-2" pref="77" max="-2" attributes="0"/>
+                                                              <EmptySpace max="32767" attributes="0"/>
+                                                              <Component id="ckbNomService" min="-2" pref="80" max="-2" attributes="0"/>
+                                                          </Group>
+                                                      </Group>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="ckbRotation" min="-2" pref="125" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="txtNomService" max="32767" attributes="0"/>
+                                                  <Component id="txtNomBatiment" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="cbRotation" alignment="0" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="87" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="ckbNom" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNom" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="ckbNom" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtNom" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbPrenom" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtPrenom" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="rdbEmployé" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="rdbPatient" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="ckbTel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtTel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="rdbImfirmier" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtAdresse" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbAdresse" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtMutuelle" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbMutuelle" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rdbMalade" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="rdbDocteur" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="ckbSalaire" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="ckbService" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="ckbMedecinTraitant" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtMedecinTraitant" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="ckbHospitalisation" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbChambre" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="rdbEmploye" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="rdbInfirmier" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbRotation" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbRotation" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="ckbSalaire" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbSupInf" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtValSalaire" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="ckbNomService" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNomService" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbService" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtNomBatiment" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbNomBatiment" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtNumDirecteur" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ckbDirecteur" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="cbSpecialite" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="ckbSpecialite" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rdbDocteur" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -177,15 +323,18 @@
           <SubComponents>
             <Component class="javax.swing.JCheckBox" name="ckbNom">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Le Nom"/>
+                <Property name="text" type="java.lang.String" value="Nom"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtNom">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Entrer le nom"/>
+                <Property name="text" type="java.lang.String" value="Entrer nom"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNomActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="rdbEmploy&#xe9;">
+            <Component class="javax.swing.JRadioButton" name="rdbEmploye">
               <Properties>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroup1"/>
@@ -193,20 +342,20 @@
                 <Property name="text" type="java.lang.String" value="Employ&#xe9;"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="rdbPatient">
+            <Component class="javax.swing.JRadioButton" name="rdbMalade">
               <Properties>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroup1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Patient"/>
+                <Property name="text" type="java.lang.String" value="Malade"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="rdbImfirmier">
+            <Component class="javax.swing.JRadioButton" name="rdbInfirmier">
               <Properties>
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroup1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Imfirmier"/>
+                <Property name="text" type="java.lang.String" value="Infirmier"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JRadioButton" name="rdbDocteur">
@@ -217,194 +366,200 @@
                 <Property name="text" type="java.lang.String" value="Docteur"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="ckbService">
+            <Component class="javax.swing.JCheckBox" name="ckbPrenom">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Le Service"/>
+                <Property name="text" type="java.lang.String" value="Prenom"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ckbPrenomActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtPrenom">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Entrer prenom"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="ckbSalaire">
+            <Component class="javax.swing.JTextField" name="txtMutuelle">
               <Properties>
-                <Property name="text" type="java.lang.String" value="le Salaire"/>
+                <Property name="text" type="java.lang.String" value="nom mutuelle"/>
               </Properties>
             </Component>
-          </SubComponents>
-        </Container>
-      </SubComponents>
-    </Container>
-    <Container class="javax.swing.JPanel" name="jPanel3">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="99" green="99" red="99" type="rgb"/>
-        </Property>
-      </Properties>
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jPanel4" max="32767" attributes="0"/>
-                      <Component id="jLabel2" pref="240" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Component id="jLabel2" min="-2" pref="24" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="21" max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel2">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="12" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Les conditions de la recherche ..."/>
-          </Properties>
-        </Component>
-        <Container class="javax.swing.JPanel" name="jPanel4">
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jComboBox1" alignment="1" min="-2" pref="146" max="-2" attributes="0"/>
-                          <Component id="lblConditionService" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                              <Component id="txtValeurSalaeur" alignment="1" min="-2" pref="127" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="ckbRotation" min="-2" max="-2" attributes="0"/>
-                                  <Component id="ckbConditionSalaires" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="21" pref="21" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="rdbSalaireEgal" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="rdbSalaireInf_à" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="rdbSalaireSup_à" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="rdbRotNuit" min="-2" max="-2" attributes="0"/>
-                                          <Component id="rdbRotJour" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="ckbRotation" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="rdbRotJour" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="rdbRotNuit" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="ckbConditionSalaires" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="rdbSalaireEgal" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="rdbSalaireInf_à" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="rdbSalaireSup_à" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="txtValeurSalaeur" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="lblConditionService" min="-2" pref="24" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="145" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JCheckBox" name="ckbRotation">
+            <Component class="javax.swing.JCheckBox" name="ckbMutuelle">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Choisisez la Rotation"/>
+                <Property name="text" type="java.lang.String" value="Mutuelle"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ckbMutuelleActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="ckbTel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Tel"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ckbTelActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtTel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="entrez tel"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="rdbRotJour">
+            <Component class="javax.swing.JCheckBox" name="ckbAdresse">
               <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="buttonGroup2"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Jour"/>
+                <Property name="text" type="java.lang.String" value="Adresse"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ckbAdresseActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtAdresse">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="tout ou partie"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="rdbRotNuit">
-              <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="buttonGroup2"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Nuit"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="ckbConditionSalaires">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Choisissez le Salaire"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="rdbSalaireEgal">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="="/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="rdbSalaireInf_&#xe0;">
-              <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="buttonGroup3"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="&lt;"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="rdbSalaireSup_&#xe0;">
-              <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="buttonGroup3"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="&gt;"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtValeurSalaeur">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Salaire en euros"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox1">
+            <Component class="javax.swing.JComboBox" name="cbRotation">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="6">
-                    <StringItem index="0" value="d&#xe9;faut"/>
-                    <StringItem index="1" value="Cardiologie"/>
-                    <StringItem index="2" value="Proctologie"/>
-                    <StringItem index="3" value="R&#xe9;animation"/>
-                    <StringItem index="4" value="Ophtalmologie"/>
-                    <StringItem index="5" value="Pneumologie"/>
+                  <StringArray count="2">
+                    <StringItem index="0" value="Jour"/>
+                    <StringItem index="1" value="Nuit"/>
                   </StringArray>
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblConditionService">
+            <Component class="javax.swing.JCheckBox" name="ckbRotation">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Choisissez le Service"/>
+                <Property name="text" type="java.lang.String" value="Rotation"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ckbRotationActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="ckbSalaire">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Salaire"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ckbSalaireActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtValSalaire">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="valeur (en &#x20ac;)"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cbSupInf">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="2">
+                    <StringItem index="0" value="&gt;"/>
+                    <StringItem index="1" value="&lt;"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="ckbNomService">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Nom"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ckbNomServiceActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="ckbHospitalisation">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Hospitalisations"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ckbHospitalisationActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="ckbMedecinTraitant">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="M&#xe9;decin Traitant"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ckbMedecinTraitantActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="ckbService">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Service"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ckbServiceActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtNomService">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="nom service"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="ckbNomBatiment">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Batiment"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ckbNomBatimentActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtNomBatiment">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="nom batiment"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="ckbDirecteur">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Directeur"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ckbDirecteurActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtNumDirecteur">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="num&#xe9;ro"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="ckbSpecialite">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Sp&#xe9;cialit&#xe9;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ckbSpecialiteActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtMedecinTraitant">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="nom m&#xe9;decin"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMedecinTraitantActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="ckbChambre">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Infos Chambre"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ckbChambreActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cbSpecialite">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="8">
+                    <StringItem index="0" value="Generaliste"/>
+                    <StringItem index="1" value="Anesthesiste"/>
+                    <StringItem index="2" value="Cardiologue"/>
+                    <StringItem index="3" value="Generaliste"/>
+                    <StringItem index="4" value="Orthopediste"/>
+                    <StringItem index="5" value="Pneumologue"/>
+                    <StringItem index="6" value="Radiologue"/>
+                    <StringItem index="7" value="Traumatologue"/>
+                  </StringArray>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>

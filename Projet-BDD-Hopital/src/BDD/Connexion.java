@@ -132,9 +132,6 @@ public class Connexion {
 
     /**
      * Methode qui retourne l'ArrayList des champs de la requete en parametre
-     * @param requete
-     * @return 
-     * @throws java.sql.SQLException
      */
     public ArrayList remplirChampsRequete(String requete) throws SQLException {
         // récupération de l'ordre de la requete

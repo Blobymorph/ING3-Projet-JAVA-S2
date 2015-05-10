@@ -5,7 +5,10 @@
  */
 package GUI;
 import BDD.*;
+import java.sql.SQLException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Axel
@@ -139,7 +142,12 @@ public class GUI_rechercher extends javax.swing.JFrame {
 
         txtAdresse.setText("tout ou partie");
 
-        cbRotation.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jour", "Nuit" }));
+        cbRotation.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "JOUR", "NUIT" }));
+        cbRotation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbRotationActionPerformed(evt);
+            }
+        });
 
         ckbRotation.setText("Rotation");
         ckbRotation.addActionListener(new java.awt.event.ActionListener() {
@@ -398,8 +406,6 @@ public class GUI_rechercher extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel1.getAccessibleContext().setAccessibleName("Paramètres de recherche");
-
         txtAreaRecherche.setColumns(20);
         txtAreaRecherche.setRows(5);
         txtAreaRecherche.setText("Espace réponse\n");
@@ -462,37 +468,37 @@ public class GUI_rechercher extends javax.swing.JFrame {
         //Recuperation des conditions de la requete
         Select.add("*");
         if (ckbNom.isSelected()){
-            Where.add("nom == '" + txtNom.getText() + "'");
+            Where.add("nom = '" + txtNom.getText() + "'");
         }
         if (ckbPrenom.isSelected()){
-            Where.add("prenom == '" + txtPrenom.getText() + "'");
+            Where.add("prenom = '" + txtPrenom.getText() + "'");
         }
         if (ckbTel.isSelected()){
-            Where.add("tel == '" + txtTel.getText() + "'");
+            Where.add("tel = '" + txtTel.getText() + "'");
         }
         if (ckbAdresse.isSelected()){
-            Where.add("adresse == '" + txtAdresse.getText() + "'");
+            Where.add("adresse = '" + txtAdresse.getText() + "'");
         }
         
         
         if (rdbMalade.isSelected()){
             From.add("malade");
             if (ckbMutuelle.isSelected()){
-                Where.add("mutuelle == '" + txtMutuelle.getText() + "'");
+                Where.add("mutuelle = '" + txtMutuelle.getText() + "'");
             }
             if (ckbMedecinTraitant.isSelected()){
                 From.add("soigne");
                 From.add("docteur");
-                Where.add("soigne.no_malade == malade.numero");
-                Where.add("soigne.no_docteur == docteur.numero");
+                Where.add("soigne.no_malade = malade.numero");
+                Where.add("soigne.no_docteur = docteur.numero");
             }
             if (ckbHospitalisation.isSelected()){
                 From.add("Hospitalisation");
-                Where.add("malde.numero == hospitalisation.no_malade");
+                Where.add("malde.numero = hospitalisation.no_malade");
                 if (ckbChambre.isSelected()){
                     From.add("Chambre");
                     From.add("Service");
-                    Where.add("Hospitalisation.no_chambre == Chambre.no_chambre");
+                    Where.add("Hospitalisation.no_chambre = Chambre.no_chambre");
                 }
             }
         }
@@ -500,23 +506,23 @@ public class GUI_rechercher extends javax.swing.JFrame {
             From.add("Employe");
         }
         if (rdbInfirmier.isSelected()){
-            From.add("Infirmier");
+            From.add("infirmier");
             if(ckbRotation.isSelected()){
-                Where.add("Infirmier.rotation == '" + cbRotation.getSelectedItem().toString() + "'");
+                Where.add("infirmier.rotation = '" + cbRotation.getSelectedItem().toString() + "'");
             }
             if(ckbSalaire.isSelected()){
-                Where.add("Infirmier.salaire " + cbSupInf.getSelectedItem().toString() + "= " + txtValSalaire.getText());
+                Where.add("infirmier.salaire " + cbSupInf.getSelectedItem().toString() + "= " + txtValSalaire.getText());
                 if(ckbService.isSelected()){
                     From.add("Service");
-                    Where.add("Infirmier.code_service == service.code");
+                    Where.add("infirmier.code_service = service.code");
                     if(ckbNomService.isSelected()){
-                        Where.add("Service.code == " + txtNomService.getText());
+                        Where.add("Service.code = " + txtNomService.getText());
                     }
                     if(ckbNomBatiment.isSelected()){
-                        Where.add("Service.batiment == " + txtNomBatiment.getText());
+                        Where.add("Service.batiment = " + txtNomBatiment.getText());
                     }
                     if(ckbDirecteur.isSelected()){
-                        Where.add("Service.directeur == " + Integer.parseInt(txtNumDirecteur.getText()));
+                        Where.add("Service.directeur = " + Integer.parseInt(txtNumDirecteur.getText()));
                     }
                 }
             }
@@ -524,7 +530,7 @@ public class GUI_rechercher extends javax.swing.JFrame {
         if (rdbDocteur.isSelected()){
             From.add("Docteur");
             if(ckbSpecialite.isSelected()){
-                Where.add("Docteur.specialite == " + cbSpecialite.getSelectedItem().toString());
+                Where.add("Docteur.specialite = " + cbSpecialite.getSelectedItem().toString());
             }
         }
         
@@ -544,7 +550,19 @@ public class GUI_rechercher extends javax.swing.JFrame {
         for(int i=1;i<Where.size();i++){
             Requete += "\nand " + Where.get(i);
         }
-        System.out.println(Requete);
+        try {
+            Connexion C = new Connexion("password.txt");
+            ArrayList<String> Values = new ArrayList<String>();
+            Values = C.remplirChampsRequete(Requete);
+            for(String s : Values){
+                System.out.println(s);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI_rechercher.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUI_rechercher.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnLancerRechercheActionPerformed
 
     private void ckbPrenomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbPrenomActionPerformed
@@ -610,6 +628,10 @@ public class GUI_rechercher extends javax.swing.JFrame {
     private void ckbChambreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckbChambreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ckbChambreActionPerformed
+
+    private void cbRotationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbRotationActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbRotationActionPerformed
 
     /**
      * @param args the command line arguments

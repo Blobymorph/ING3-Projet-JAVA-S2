@@ -7,6 +7,7 @@
 package Main;
 import dataElements.*;
 import GUI.*;
+import java.io.*;
 /**
  *
  * @author Charles
@@ -21,6 +22,8 @@ public class ProjetBDDHopital {
         ProjetBDDHopital Projet = new ProjetBDDHopital();
         //Projet.basicInterface();
         Projet.standardInterface();
+        File file = new File("password.txt");
+        file.delete();
     }
     
     public static void standardInterface(){

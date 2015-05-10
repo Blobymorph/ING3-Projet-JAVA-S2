@@ -6,6 +6,10 @@
 package GUI;
 import BDD.*;
 import dataElements.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.sql.*;
 import java.util.*;
 import java.util.logging.Level;
@@ -159,20 +163,32 @@ public class GUI_login extends javax.swing.JFrame {
     
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-            
-        // utiliser txtIdCampus pswdMdpCampus txtIdBdd pswdMdpBdd dans requete pour ce connecter à la bdd
+        PrintWriter writer;
         try {
-            Connexion C = new Connexion(txtIdCampus.getText(),pswdMdpCampus.getText(),txtIdBdd.getText(),pswdMdpBdd.getText());
+            writer = new PrintWriter("password.txt", "UTF-8");
+            writer.println(txtIdCampus.getText());
+            writer.println(pswdMdpCampus.getText());
+            writer.println(txtIdBdd.getText());
+            writer.println(pswdMdpBdd.getText());
+            writer.close();    
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(GUI_login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(GUI_login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // utiliser txtIdCampus pswdMdpCampus txtIdBdd pswdMdpBdd dans requete pour ce connecter à la bdd
+        //try {
+            //Connexion C = new Connexion("password.txt");
             
             GUI_Hospital ghosto = new GUI_Hospital();
             this.dispose();
             ghosto.setVisible(true);
             
-        } catch (SQLException ex) {
-            Logger.getLogger(GUI_login.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUI_login.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        //} catch (SQLException ex) {
+        //    Logger.getLogger(GUI_login.class.getName()).log(Level.SEVERE, null, ex);
+        //} catch (ClassNotFoundException ex) {
+        //    Logger.getLogger(GUI_login.class.getName()).log(Level.SEVERE, null, ex);
+        //}
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**

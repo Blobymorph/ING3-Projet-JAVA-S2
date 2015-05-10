@@ -6,6 +6,7 @@
 
 package BDD;
 import dataElements.*;
+import java.io.*;
 import java.sql.*;
 import java.util.*;
 
@@ -37,6 +38,51 @@ public class Connexion {
      * Constructeur avec 4 paramètres : username et password ECE, login et password de la BDD
      */
     public Connexion(String usernameECE, String passwordECE, String loginDatabase, String passwordDatabase) throws SQLException, ClassNotFoundException {
+        // chargement driver "com.mysql.jdbc.Driver"
+        Class.forName("com.mysql.jdbc.Driver");
+
+        // Connexion via le tunnel SSH avec le username et le password ECE
+        SSHTunnel ssh = new SSHTunnel(usernameECE, passwordECE);
+
+        if (ssh.connect()) {
+            System.out.println("Connexion reussie");
+
+            // url de connexion "jdbc:mysql://localhost:3305/usernameECE"
+            String urlDatabase = "jdbc:mysql://localhost:3305/" + usernameECE;
+
+            //création d'une connexion JDBC à la base
+            conn = DriverManager.getConnection(urlDatabase, loginDatabase, passwordDatabase);
+
+            // création d'un ordre SQL (statement)
+            stmt = conn.createStatement();
+
+            // initialisation de la liste des requetes de selection et de MAJ
+            remplirRequetes();
+            remplirRequetesMaj();
+        }
+    }
+    //Constructeur avec chargement depuis fichier
+    public Connexion(String filename) throws SQLException, ClassNotFoundException {
+        //chargement depuis le fichier
+        String usernameECE = new String();
+        String passwordECE = new String();
+        String loginDatabase = new String();
+        String passwordDatabase = new String();
+        try {
+            File myFile = new File(filename);
+            FileReader fr = new FileReader(myFile);
+            BufferedReader br = new BufferedReader(fr);
+            String line;
+            // buffered reader can be processed line by line as long as
+            // there is something left to be read
+            usernameECE = br.readLine();
+            passwordECE = br.readLine();
+            loginDatabase = br.readLine();
+            passwordDatabase = br.readLine();
+            br.close();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
         // chargement driver "com.mysql.jdbc.Driver"
         Class.forName("com.mysql.jdbc.Driver");
 
@@ -175,11 +221,3 @@ public class Connexion {
         stmt.executeUpdate(requeteMaj);
     }
 }
-
-/*
-public class Connexion {
-    public String createAddElementRequest(DataElement Element){
-        return Element.getAddRequest();
-    }
-    
-}*/

@@ -5,6 +5,7 @@
  */
 package GUI;
 import BDD.*;
+import java.io.File;
 /**
  *
  * @author Axel
@@ -129,15 +130,15 @@ public class GUI_Hospital extends javax.swing.JFrame {
 
     private void btnModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifierActionPerformed
         // TODO add your handling code here:
-        
         GUI_modifications gmod = new GUI_modifications();
         gmod.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_btnModifierActionPerformed
 
     private void btnFermerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFermerActionPerformed
         // TODO add your handling code here:
-        
-        this.dispose();
+        File file = new File("password.txt");
+        file.delete();
+        System.exit(0);
     }//GEN-LAST:event_btnFermerActionPerformed
 
     /**

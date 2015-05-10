@@ -125,9 +125,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Param&#xe8;tres de recherche"/>
           </Properties>
-          <AccessibilityProperties>
-            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Param&#xe8;tres de recherche"/>
-          </AccessibilityProperties>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel2">
 
@@ -422,11 +419,14 @@
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="2">
-                    <StringItem index="0" value="Jour"/>
-                    <StringItem index="1" value="Nuit"/>
+                    <StringItem index="0" value="JOUR"/>
+                    <StringItem index="1" value="NUIT"/>
                   </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbRotationActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="ckbRotation">
               <Properties>

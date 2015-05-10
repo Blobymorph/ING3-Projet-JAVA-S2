@@ -161,18 +161,18 @@ public class GUI_login extends javax.swing.JFrame {
         // TODO add your handling code here:
             
         // utiliser txtIdCampus pswdMdpCampus txtIdBdd pswdMdpBdd dans requete pour ce connecter à la bdd
-        //try {
-            //Connexion C = new Connexion(txtIdCampus.getText(),pswdMdpCampus.getText(),txtIdBdd.getText(),pswdMdpBdd.getText());
+        try {
+            Connexion C = new Connexion(txtIdCampus.getText(),pswdMdpCampus.getText(),txtIdBdd.getText(),pswdMdpBdd.getText());
             
             GUI_Hospital ghosto = new GUI_Hospital();
             this.dispose();
             ghosto.setVisible(true);
             
-        //} catch (SQLException ex) {
-        //    Logger.getLogger(GUI_login.class.getName()).log(Level.SEVERE, null, ex);
-        //} catch (ClassNotFoundException ex) {
-        //    Logger.getLogger(GUI_login.class.getName()).log(Level.SEVERE, null, ex);
-        //}
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI_login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUI_login.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnLoginActionPerformed
 
     /**

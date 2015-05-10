@@ -27,10 +27,10 @@ public class ProjetBDDHopital {
         // lance module de login : à faire requete avec les champs 
         // lance le menu et se ferme (ça c'est dans GUI_login)
         //si ça marche pas ou pour faire des tests changer les commentaire de place en dessous 
-        GUI_Hospital ghosto = new GUI_Hospital();
-        ghosto.setVisible(true);
-        //GUI_login glog = new GUI_login();
-        //glog.setVisible(true);
+        //GUI_Hospital ghosto = new GUI_Hospital();
+        //ghosto.setVisible(true);
+        GUI_login glog = new GUI_login();
+        glog.setVisible(true);
     }
     
     public static void basicInterface(){

@@ -5,6 +5,13 @@
  */
 package GUI;
 import BDD.*;
+import java.awt.BorderLayout;
+import java.awt.Container;
+import javax.swing.JPanel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
 /*
 import org.jfree.chart.ChartPanel;
 import org.jfree.data.general.DefaultPieDataset;
@@ -18,6 +25,8 @@ import org.jfree.chart.ChartFactory;
  */
 public class GUI_reporting extends javax.swing.JFrame {
 
+    int action;
+ 
     /**
      * Creates new form GUI_statistique
      */
@@ -135,6 +144,30 @@ public class GUI_reporting extends javax.swing.JFrame {
         
         // faire la requete sql et ranger les variables aux bon endroits
         
+      
+            switch(action)
+            { 
+                case 1 : break;
+                //nombre d'employe par tranche de salaires
+                default: 
+                    panelHistogramme = new JPanel(new BorderLayout()); 
+                        setContentPane(panelHistogramme); 
+                        DefaultPieDataset pieDataset = new DefaultPieDataset();
+                        pieDataset.setValue("Valeur1", new Integer(27));
+                        pieDataset.setValue("Valeur2", new Integer(10));
+                        pieDataset.setValue("Valeur3", new Integer(50));
+                        pieDataset.setValue("Valeur4", new Integer(5));
+                        JFreeChart pieChart = ChartFactory.createPieChart("Test camembert",pieDataset, true, true, true);
+                        ChartPanel cPanel = new ChartPanel(pieChart);
+                        this.panelHistogramme.add(cPanel);
+                        this.panelHistogramme.setVisible(true);
+                        break;
+                       
+            }
+        
+    
+        
+        
         /*
         DefaultPieDataset pieDataset = new DefaultPieDataset(); 
         pieDataset.setValue("Valeur1", new Integer(27)); 
@@ -159,8 +192,9 @@ public class GUI_reporting extends javax.swing.JFrame {
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
         // TODO add your handling code here:
         
-        if(jComboBox1.getSelectedIndex()==1){
-            
+        if((jComboBox1.getSelectedIndex()!=0)||(jComboBox1.getSelectedIndex()!=-1)){
+            action = jComboBox1.getSelectedIndex();
+ 
             
         }
                 

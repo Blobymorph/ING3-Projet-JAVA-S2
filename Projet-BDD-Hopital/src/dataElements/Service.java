@@ -5,7 +5,8 @@
  */
 
 package dataElements;
-
+import java.util.Arrays;
+import java.util.List;
 /**
  *
  * @author Charles
@@ -59,6 +60,14 @@ public class Service extends DataElement {
         this.batiment = batiment;
         this.directeur = directeur;
     }
+    /*
+    public Service(String donnee){
+        List<String> donneeList = Arrays.asList(donnee.split(","));
+        this.code_service = donneeList.get(0);
+        this.nom = donneeList.get(1);
+        this.batiment= donneeList.get(2);
+        this.directeur = Integer.parseInt(donneeList.get(3));
+    }*/
     //Methods
     @Override
     public String getAddRequest(){

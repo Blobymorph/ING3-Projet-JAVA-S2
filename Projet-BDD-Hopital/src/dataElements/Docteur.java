@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package dataElements;
-
+import java.util.Arrays;
+import java.util.List;
 /**
  *
  * @author thibault
@@ -35,6 +36,17 @@ public class Docteur extends Employe {
         this.specialite = specialite;
     }
     
+    public Docteur(String donnee)
+     {
+        super(donnee);
+        List<String> donneeList = Arrays.asList(donnee.split(","));
+        int pb = Integer.parseInt( donneeList.get(0));
+        this.nom = donneeList.get(1);
+        this.prenom = donneeList.get(2);
+        this.tel = donneeList.get(3);
+        this.adresse = donneeList.get(4);
+        this.specialite = donneeList.get(5);
+    }
     //methods
     @Override
     public String getAddRequest(){

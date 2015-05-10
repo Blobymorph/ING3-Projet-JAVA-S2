@@ -5,7 +5,8 @@
  */
 
 package dataElements;
-
+import java.util.Arrays;
+import java.util.List;
 /**
  *
  * @author Charles
@@ -59,6 +60,14 @@ private int nombre_lits;
     
     public Chambre(int numero_chambre){
         this.numero_chambre = numero_chambre;
+    }
+    
+    public Chambre(String donnee){
+        List<String> donneeList = Arrays.asList(donnee.split(","));
+        this.code_service =donneeList.get(0);
+        this.numero_chambre = Integer.parseInt( donneeList.get(1));
+        this.num_surveillant = Integer.parseInt( donneeList.get(2));
+        this.nombre_lits = Integer.parseInt( donneeList.get(3));
     }
     //Methods
     @Override

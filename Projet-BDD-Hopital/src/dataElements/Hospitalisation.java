@@ -5,6 +5,9 @@
  */
 package dataElements;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  *
  * @author thibault
@@ -61,6 +64,15 @@ public class Hospitalisation extends DataElement {
         this.code_service = code_service;
         this.numero_chambre = numero_chambre;
         this.num_lit = num_lit;
+    }
+    
+    public Hospitalisation(String donnee)
+    {
+        List<String> donneeList = Arrays.asList(donnee.split(","));
+        this.numero_malade = Integer.parseInt( donneeList.get(0));
+        this.code_service =donneeList.get(1);
+        this.numero_chambre = Integer.parseInt( donneeList.get(2));
+        this.num_lit = Integer.parseInt( donneeList.get(3));
     }
     //Methods
     @Override

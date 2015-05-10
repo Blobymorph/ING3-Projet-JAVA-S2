@@ -6,7 +6,7 @@
 
 package Main;
 import dataElements.*;
-
+import GUI.*;
 /**
  *
  * @author Charles
@@ -16,9 +16,21 @@ public class ProjetBDDHopital {
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String[] args) {
         ProjetBDDHopital Projet = new ProjetBDDHopital();
-        ProjetBDDHopital.basicInterface();
+        //Projet.basicInterface();
+        Projet.standardInterface();
+    }
+    
+    public static void standardInterface(){
+        // lance module de login : à faire requete avec les champs 
+        // lance le menu et se ferme (ça c'est dans GUI_login)
+        //si ça marche pas ou pour faire des tests changer les commentaire de place en dessous 
+        GUI_Hospital ghosto = new GUI_Hospital();
+        ghosto.setVisible(true);
+        //GUI_login glog = new GUI_login();
+        //glog.setVisible(true);
     }
     
     public static void basicInterface(){

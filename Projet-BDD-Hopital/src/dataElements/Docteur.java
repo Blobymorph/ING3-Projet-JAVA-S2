@@ -50,15 +50,21 @@ public class Docteur extends Employe {
     //methods
     @Override
     public String getAddRequest(){
-        String Request = "insert into docteur values ";
+        String Request = "insert into employe values ";
         Request += "(";
         Request += Integer.toString(getNum_employe()) + ",'";
         Request += getNom() + "','";
         Request += getPrenom() + "','";
-        Request += getTel() + "','";
         Request += getAdresse() + "','";
+        Request += getTel();
+        Request += "');";
+        /*
+        Request += "insert into docteur values ";
+        Request += "(";
+        Request += Integer.toString(getNum_employe()) + ",'";
         Request += getSpecialite();
         Request += "');";
+        */        
         return Request;
     }
 }

@@ -319,34 +319,68 @@ public class GUI_modifications extends javax.swing.JFrame {
         try{
             Connexion C = new Connexion("password.txt");
             ArrayList<String> Values = new ArrayList<String>();
-
+            String Request = new String();
             switch(cmbTableAjout.getSelectedIndex()){
                 case 1 : Docteur d = new Docteur(Integer.parseInt(jTextField1.getText()), jTextField2.getText(), jTextField3.getText(), jTextField4.getText(), jTextField5.getText(), jTextField6.getText()); //nouveau Docteur
-                    d.getAddRequest();
+                    Request = "insert into employe values ";
+                    Request += "(";
+                    Request += jTextField1.getText() + ",'";
+                    Request += jTextField2.getText() + "','";
+                    Request += jTextField3.getText() + "','";
+                    Request += jTextField4.getText() + "','";
+                    Request += jTextField5.getText();
+                    Request += "');";
+                    System.out.println(Request);
+                    C.executeUpdate(Request);
+                    Request = "insert into docteur values ";
+                    Request += "(";
+                    Request += jTextField1.getText() + ",'";
+                    Request += jTextField6.getText();
+                    Request += "');";
+                    System.out.println(Request);
+                    C.executeUpdate(Request);
                     break; 
-                case 2 : Infirmier i = new Infirmier(Integer.parseInt(jTextField1.getText()), jTextField2.getText(), jTextField3.getText(), jTextField4.getText(), jTextField5.getText(), jTextField6.getText(),jTextField7.getText(),Double.parseDouble(jTextField7.getText())); //nouveau Imfirmier
-                    i.getAddRequest();
+                case 2 : Infirmier i = new Infirmier(Integer.parseInt(jTextField1.getText()), jTextField2.getText(), jTextField3.getText(), jTextField4.getText(), jTextField5.getText(), jTextField6.getText(),jTextField7.getText(),Double.parseDouble(jTextField8.getText())); //nouveau Imfirmier
+                    Request = "insert into employe values ";
+                    Request += "(";
+                    Request += jTextField1.getText() + ",'";
+                    Request += jTextField2.getText() + "','";
+                    Request += jTextField3.getText() + "','";
+                    Request += jTextField4.getText() + "','";
+                    Request += jTextField5.getText();
+                    Request += "');";
+                    System.out.println(Request);
+                    C.executeUpdate(Request);
+                    Request = "insert into infirmier values ";
+                    Request += "(";
+                    Request += jTextField1.getText() + ",'";
+                    Request += jTextField6.getText() + "','";
+                    Request += jTextField7.getText() + "','";
+                    Request += jTextField8.getText();
+                    Request += "');";
+                    System.out.println(Request);
+                    C.executeUpdate(Request);
                     break;
                 case 3 : Employe e = new Employe(Integer.parseInt(jTextField1.getText()), jTextField2.getText(), jTextField3.getText(), jTextField4.getText(), jTextField5.getText()); //nouveau Employé
-                    e.getAddRequest();
+                    C.executeUpdate(e.getAddRequest());
                     break;
                 case 4 : Malade m = new Malade(Integer.parseInt(jTextField1.getText()), jTextField2.getText(), jTextField3.getText(), jTextField4.getText(), jTextField5.getText(), jTextField6.getText());//nouveau Malade
-                    m.getAddRequest();
+                    C.executeUpdate(m.getAddRequest());
                     break;
                 case 5 : Soigne so = new Soigne(Integer.parseInt(jTextField1.getText()),Integer.parseInt(jTextField2.getText()));//nouveau Soigne
-                    so.getAddRequest();
+                    C.executeUpdate(so.getAddRequest());
                     break;
                 case 6 : Service se = new Service(jTextField1.getText(), jTextField2.getText(), jTextField3.getText(), Integer.parseInt(jTextField4.getText()));//nouveau Service
-                    se.getAddRequest();
+                    C.executeUpdate(se.getAddRequest());
                     break;
                 case 7 : Chambre c =new Chambre(jTextField1.getText(), Integer.parseInt(jTextField2.getText()), Integer.parseInt(jTextField3.getText()), Integer.parseInt(jTextField4.getText()));//nouveau Chambre
-                    c.getAddRequest();
+                    C.executeUpdate(c.getAddRequest());
                     break;
                 case 8 : Hospitalisation h = new Hospitalisation(Integer.parseInt(jTextField1.getText()), jTextField2.getText(), Integer.parseInt(jTextField3.getText()), Integer.parseInt(jTextField4.getText()));//nouveau Hospitalisation
-                    h.getAddRequest();
+                    C.executeUpdate(h.getAddRequest());
                     break;  
             }
-        
+            C.destroy();
         } catch (SQLException ex) {
             Logger.getLogger(GUI_rechercher.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {

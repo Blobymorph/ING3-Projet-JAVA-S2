@@ -68,10 +68,15 @@ public class GUI_reporting extends javax.swing.JFrame {
         lblReporting.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         lblReporting.setText("Reporting");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Choisir une population", "Nombre d'employé par tranches de salaires", "Nombre d'employé par service", "Nombre d'employé par spécialité", "Nombre d'employé par rotation", "Salaire des employés par service", "Salaire des employés par spécialité", "Salaire des employés par métier", "Nombre de malades par service", "Nombre de malades par mutuelle", "Nombre de chambres par service" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Choisir une population", "Nombre d'employé par tranches de salaires", "Nombre d'employé par service", "Nombre d'employé par spécialité", "Nombre d'employé par rotation", "Salaire des employés par service", "Nombre de malades par service", "Nombre de malades par mutuelle", "Nombre de chambres par service" }));
         jComboBox1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jComboBox1ItemStateChanged(evt);
+            }
+        });
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
             }
         });
 
@@ -224,46 +229,6 @@ public class GUI_reporting extends javax.swing.JFrame {
 
             case 6:
                 //set values
-/////noms
-                final String Anesthesiste = "Anesthesiste";
-                final String Cardiologue = "Cardiologue";
-                final String Generaliste = "Generaliste";
-                final String Orthopediste = "Orthopediste";
-                final String Pneumologue = "Pneumologue";
-                final String Radiologue = "Radiologue";
-                final String Traumatologue = "Traumatologue";
-                final String salairee = "salaire";
-                Infox = "specialité";
-                Infoy = "salaire";
-                text = "Moyenne des salaires des medecins par spécialité";
-
-/// init
-                dataset.addValue(getSalaireParSpecialite(1), salairee, Anesthesiste);
-                dataset.addValue(getSalaireParSpecialite(2), salairee, Cardiologue);
-                dataset.addValue(getSalaireParSpecialite(3), salairee, Generaliste);
-                dataset.addValue(getSalaireParSpecialite(4), salairee, Orthopediste);
-                dataset.addValue(getSalaireParSpecialite(5), salairee, Pneumologue);
-                dataset.addValue(getSalaireParSpecialite(6), salairee, Radiologue);
-                dataset.addValue(getSalaireParSpecialite(7), salairee, Traumatologue);
-                break;
-            ////////////////////                  
-
-            case 7:
-                //set values
-                final String salaires = "Salaire";
-                final String doc = "Docteur";
-                final String inf = "Infirmier";
-                final String aut = "Autre";
-                dataset.addValue(getSalaireParMetier(1), salaires, doc);
-                dataset.addValue(getSalaireParMetier(2), salaires, inf);
-                dataset.addValue(getSalaireParMetier(3), salaires, aut);
-                Infox = "Metier";
-                Infoy = "Salaire";
-                text = "Salaire par metier";
-
-                break;
-            case 8:
-                //set values
                 final String malade = "Malade";
                 final String rea = "REA";
                 final String chg = "CHG";
@@ -274,7 +239,8 @@ public class GUI_reporting extends javax.swing.JFrame {
                 Infox = "Service";
                 Infoy = "Nombre de malades";
                 text = "Nombre de malade par service";
-            case 9:
+                break;
+            case 7:
                 //set values
                 final String MAAF = "MAAF";
                 final String MNAM = "MNAM";
@@ -288,7 +254,7 @@ public class GUI_reporting extends javax.swing.JFrame {
                 final String AG2R = "AG2R";
                 final String MNFTC = "MNFTC";
                 final String MGSP = "MGSP";
-                final String salaire0 = "salaire";
+                final String salaire0 = "Mutuelle";
                 Infox = "Mutuelle";
                 Infoy = "Malades";
                 text = "Nombre de malades par mutuelle";
@@ -308,7 +274,7 @@ public class GUI_reporting extends javax.swing.JFrame {
                 dataset.addValue(getMaladeParMutuelle(12), salaire0, MGSP);
                 break;
 
-            case 10:
+            case 8:
                 //set values
                 final String malades = "Chambre";
                 final String reas = "REA";
@@ -321,6 +287,7 @@ public class GUI_reporting extends javax.swing.JFrame {
                 Infoy = "Nombre de chambre";
                 text = "Nombre de chambre par service";
                 break;
+
             default:
                 break;
 
@@ -623,12 +590,97 @@ public class GUI_reporting extends javax.swing.JFrame {
         }
         return value;
     }
-/*
-    //demande le salaire moyen par profession
-    int getSalaireParSpecialite(int num_spe) {
-        String specialite = "";
+    /*
+     //demande le salaire moyen par profession
+     int getSalaireParSpecialite(int num_spe) {
+     String specialite = "";
+     String inter;
+     String Requete="";
+     String service = "";
+     int value = 0;
+     try {
+
+     Connexion C = new Connexion("password.txt");
+
+     ArrayList<String> Values = new ArrayList<String>();
+     String Periode = "";
+     switch (num_spe) {
+     case 1:
+     specialite = "Anesthesiste";
+     Requete = "select  AVG(salaire) from employe,docteur where employe.numero = docteur.numero and docteur.specialite='"+specialite+"'";
+     break;
+     case 2:
+     specialite = "Cardiologue";
+     Requete = "select  AVG(salaire) from employe,docteur where employe.numero = docteur.numero and docteur.specialite='"+specialite+"'";
+     break;
+     case 3:
+     specialite = "Generaliste";
+     Requete = "select  AVG(salaire) from employe,docteur where employe.numero = docteur.numero and docteur.specialite='"+specialite+"'";
+     break;
+     case 4:
+     specialite = "Orthopediste";
+     Requete = "select  AVG(salaire) from employe,docteur where employe.numero = docteur.numero and docteur.specialite='"+specialite+"'";
+     break;
+     case 5:
+     specialite = "Pneumologue";
+     Requete = "select  AVG(salaire) from employe,docteur where employe.numero = docteur.numero and docteur.specialite='"+specialite+"'";
+     break;
+     case 6:
+     specialite = "Radiologue";
+     Requete = "select  AVG(salaire) from employe,docteur where employe.numero = docteur.numero and docteur.specialite='"+specialite+"'";
+     break;
+     case 7:
+     specialite = "Traumatologue";
+     Requete = "select  AVG(salaire) from employe,docteur where employe.numero = docteur.numero and docteur.specialite='"+specialite+"'";
+     break;
+     }
+     System.out.println(Requete);
+     Values = C.remplirChampsRequete(Requete);
+     for (String s : Values) {
+     System.out.println(s);
+     }
+
+     inter = Values.get(0);
+     inter = inter.replace("\n", "").replace("\r", "");
+     System.out.println("'" + inter + "'");
+     value = (int) Double.parseDouble(inter);
+
+     //connexion
+     C.destroy();
+     } catch (SQLException ex) {
+     Logger.getLogger(GUI_rechercher.class.getName()).log(Level.SEVERE, null, ex);
+     } catch (ClassNotFoundException ex) {
+     Logger.getLogger(GUI_rechercher.class.getName()).log(Level.SEVERE, null, ex);
+     }
+
+     return value;
+     }
+
+     //demande le samaire moyen par metier
+     int getSalaireParMetier(int met) {
+     String service;
+     int value = 0;
+     //recuperation des donnee
+     switch (met) {
+     case 1:
+     service = "Docteur";
+     break;
+     case 2:
+     service = "Infirmier";
+     break;
+     case 3:
+     service = "autres";
+     break;
+     }
+     return value;
+     }
+     */
+
+    //demande le nombre de malades par service
+
+    int getMaladeParService(int num_service) {
         String inter;
-        String Requete="";
+        String Requete = "";
         String service = "";
         int value = 0;
         try {
@@ -637,103 +689,22 @@ public class GUI_reporting extends javax.swing.JFrame {
 
             ArrayList<String> Values = new ArrayList<String>();
             String Periode = "";
-            switch (num_spe) {
+            //recuperation des donnee
+            switch (num_service) {
                 case 1:
-                    specialite = "Anesthesiste";
-                    Requete = "select  AVG(salaire) from employe,docteur where employe.numero = docteur.numero and docteur.specialite='"+specialite+"'";
+                    service = "REA";
+                    Requete = "select  count(*) from malade,hospitalisation where malade.numero = hospitalisation.no_malade and hospitalisation.code_service='" + service + "'";
                     break;
                 case 2:
-                    specialite = "Cardiologue";
-                    Requete = "select  AVG(salaire) from employe,docteur where employe.numero = docteur.numero and docteur.specialite='"+specialite+"'";
+                    service = "CHG";
+                    Requete = "select  count(*) from malade,hospitalisation where malade.numero = hospitalisation.no_malade and hospitalisation.code_service='" + service + "'";
                     break;
                 case 3:
-                    specialite = "Generaliste";
-                    Requete = "select  AVG(salaire) from employe,docteur where employe.numero = docteur.numero and docteur.specialite='"+specialite+"'";
-                    break;
-                case 4:
-                    specialite = "Orthopediste";
-                    Requete = "select  AVG(salaire) from employe,docteur where employe.numero = docteur.numero and docteur.specialite='"+specialite+"'";
-                    break;
-                case 5:
-                    specialite = "Pneumologue";
-                    Requete = "select  AVG(salaire) from employe,docteur where employe.numero = docteur.numero and docteur.specialite='"+specialite+"'";
-                    break;
-                case 6:
-                    specialite = "Radiologue";
-                    Requete = "select  AVG(salaire) from employe,docteur where employe.numero = docteur.numero and docteur.specialite='"+specialite+"'";
-                    break;
-                case 7:
-                    specialite = "Traumatologue";
-                    Requete = "select  AVG(salaire) from employe,docteur where employe.numero = docteur.numero and docteur.specialite='"+specialite+"'";
+                    service = "CAR";
+                    Requete = "select  count(*) from malade,hospitalisation where malade.numero = hospitalisation.no_malade and hospitalisation.code_service='" + service + "'";
                     break;
             }
             System.out.println(Requete);
-            Values = C.remplirChampsRequete(Requete);
-            for (String s : Values) {
-                System.out.println(s);
-            }
-
-            inter = Values.get(0);
-            inter = inter.replace("\n", "").replace("\r", "");
-            System.out.println("'" + inter + "'");
-            value = (int) Double.parseDouble(inter);
-
-//connexion
-            C.destroy();
-        } catch (SQLException ex) {
-            Logger.getLogger(GUI_rechercher.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(GUI_rechercher.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return value;
-    }
-
-    //demande le samaire moyen par metier
-    int getSalaireParMetier(int met) {
-        String service;
-        int value = 0;
-        //recuperation des donnee
-        switch (met) {
-            case 1:
-                service = "Docteur";
-                break;
-            case 2:
-                service = "Infirmier";
-                break;
-            case 3:
-                service = "autres";
-                break;
-        }
-        return value;
-    }
-*/
-    //demande le nombre de malades par service
-    int getMaladeParService(int num_service) {
-        String inter;
-        String Requete="";
-        String service = "";
-        int value = 0;
-        try {
-
-            Connexion C = new Connexion("password.txt");
-
-            ArrayList<String> Values = new ArrayList<String>();
-            String Periode = "";
-        //recuperation des donnee
-        switch (num_service) {
-            case 1:
-                service = "REA";
-                Requete = "select  count(*) from malade,hospitalisation where malade.numero = hospitalisation.no_malade and hospitalisation.rotation='JOUR'";
-                break;
-            case 2:
-                service = "CHG";
-                break;
-            case 3:
-                service = "CAR";
-                break;
-        }
-        System.out.println(Requete);
             Values = C.remplirChampsRequete(Requete);
             for (String s : Values) {
                 System.out.println(s);
@@ -756,66 +727,131 @@ public class GUI_reporting extends javax.swing.JFrame {
 
     //demande le nombre de chambre du service
     int getChambreParService(int num_service) {
-        String service;
+        String inter;
+        String Requete = "";
+        String service = "";
         int value = 0;
+        try {
+
+            Connexion C = new Connexion("password.txt");
+
+            ArrayList<String> Values = new ArrayList<String>();
+            String Periode = "";
         //recuperation des donnee
         switch (num_service) {
             case 1:
                 service = "REA";
+                Requete = "select  count(*) from chambre where chambre.code_service ='" + service + "'";
                 break;
             case 2:
                 service = "CHG";
+                Requete = "select  count(*) from chambre where chambre.code_service ='" + service + "'";
                 break;
             case 3:
                 service = "CAR";
+                Requete = "select  count(*) from chambre where chambre.code_service ='" + service + "'";
                 break;
+        }System.out.println(Requete);
+            Values = C.remplirChampsRequete(Requete);
+            for (String s : Values) {
+                System.out.println(s);
+            }
+
+            inter = Values.get(0);
+            inter = inter.replace("\n", "").replace("\r", "");
+            System.out.println("'" + inter + "'");
+            value = (int) Double.parseDouble(inter);
+
+//connexion
+            C.destroy();
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI_rechercher.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUI_rechercher.class.getName()).log(Level.SEVERE, null, ex);
         }
         return value;
     }
 
     //retourne le nombre de patients par mutuelle
     int getMaladeParMutuelle(int num_mut) {
+        String inter;
+        String Requete = "";
         String specialite = "";
         int value = 0;
-        switch (num_mut) {
-            case 1:
-                specialite = "MAAF";
-                break;
-            case 2:
-                specialite = "MNAM";
-                break;
-            case 3:
-                specialite = "LMDE";
-                break;
-            case 4:
-                specialite = "MNH";
-                break;
-            case 5:
-                specialite = "MGEN";
-                break;
-            case 6:
-                specialite = "MMA";
-                break;
-            case 7:
-                specialite = "CNAMTS";
-                break;
-            case 8:
-                specialite = "CCVRP";
-                break;
-            case 9:
-                specialite = "MAS";
-                break;
-            case 10:
-                specialite = "AG2R";
-                break;
-            case 11:
-                specialite = "MNFTC";
-                break;
-            case 12:
-                specialite = "MGSP";
-                break;
-        }
+        try {
 
+            Connexion C = new Connexion("password.txt");
+
+            ArrayList<String> Values = new ArrayList<String>();
+            String Periode = "";
+            switch (num_mut) {
+                case 1:
+                    specialite = "MAAF";
+                    Requete = "select  count(*) from malade where malade.mutuelle  ='" + specialite + "'";
+                    break;
+                case 2:
+                    specialite = "MNAM";
+                    Requete = "select  count(*) from malade where malade.mutuelle ='" + specialite + "'";
+                    break;
+                case 3:
+                    specialite = "LMDE";
+                    Requete = "select  count(*) from malade where malade.mutuelle ='" + specialite + "'";
+                    break;
+                case 4:
+                    specialite = "MNH";
+                    Requete = "select  count(*) from malade where malade.mutuelle ='" + specialite + "'";
+                    break;
+                case 5:
+                    specialite = "MGEN";
+                    Requete = "select  count(*) from malade where malade.mutuelle ='" + specialite + "'";
+                    break;
+                case 6:
+                    specialite = "MMA";
+                    Requete = "select  count(*) from malade where malade.mutuelle ='" + specialite + "'";
+                    break;
+                case 7:
+                    specialite = "CNAMTS";
+                    Requete = "select  count(*) from malade where malade.mutuelle ='" + specialite + "'";
+                    break;
+                case 8:
+                    specialite = "CCVRP";
+                    Requete = "select  count(*) from malade where malade.mutuelle ='" + specialite + "'";
+                    break;
+                case 9:
+                    specialite = "MAS";
+                    Requete = "select  count(*) from malade where malade.mutuelle ='" + specialite + "'";
+                    break;
+                case 10:
+                    specialite = "AG2R";
+                    Requete = "select  count(*) from malade where malade.mutuelle ='" + specialite + "'";
+                    break;
+                case 11:
+                    specialite = "MNFTC";
+                    Requete = "select  count(*) from malade where malade.mutuelle ='" + specialite + "'";
+                    break;
+                case 12:
+                    specialite = "MGSP";
+                    Requete = "select  count(*) from malade where malade.mutuelle ='" + specialite + "'";
+                    break;
+            }
+            System.out.println(Requete);
+            Values = C.remplirChampsRequete(Requete);
+            for (String s : Values) {
+                System.out.println(s);
+            }
+
+            inter = Values.get(0);
+            inter = inter.replace("\n", "").replace("\r", "");
+            System.out.println("'" + inter + "'");
+            value = (int) Double.parseDouble(inter);
+
+//connexion
+            C.destroy();
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI_rechercher.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUI_rechercher.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return value;
     }
 
@@ -843,6 +879,10 @@ public class GUI_reporting extends javax.swing.JFrame {
         this.dispose();
         ghosto.setVisible(true);
     }//GEN-LAST:event_btnRetourActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments

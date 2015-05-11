@@ -59,7 +59,6 @@ public class GUI_reporting extends javax.swing.JFrame {
         btnLancerStat = new javax.swing.JButton();
         panelHistogramme = new javax.swing.JPanel();
         lblPopu = new javax.swing.JLabel();
-        btnHistoriqueRequetes = new javax.swing.JButton();
         btnRetour = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -104,15 +103,6 @@ public class GUI_reporting extends javax.swing.JFrame {
 
         lblPopu.setText("Population à étudier :");
 
-        btnHistoriqueRequetes.setBackground(new java.awt.Color(0, 102, 0));
-        btnHistoriqueRequetes.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnHistoriqueRequetes.setText("Historique des requêtes ");
-        btnHistoriqueRequetes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHistoriqueRequetesActionPerformed(evt);
-            }
-        });
-
         btnRetour.setBackground(new java.awt.Color(255, 0, 0));
         btnRetour.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnRetour.setText("Retour");
@@ -131,7 +121,6 @@ public class GUI_reporting extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnHistoriqueRequetes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnLancerStat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnRetour, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -155,12 +144,11 @@ public class GUI_reporting extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
+                        .addGap(64, 64, 64)
                         .addComponent(btnLancerStat, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)
-                        .addComponent(btnHistoriqueRequetes, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(btnRetour, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(53, 53, 53)
+                        .addComponent(btnRetour, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48))
                     .addComponent(panelHistogramme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(43, Short.MAX_VALUE))
         );
@@ -677,7 +665,6 @@ public class GUI_reporting extends javax.swing.JFrame {
      */
 
     //demande le nombre de malades par service
-
     int getMaladeParService(int num_service) {
         String inter;
         String Requete = "";
@@ -737,21 +724,22 @@ public class GUI_reporting extends javax.swing.JFrame {
 
             ArrayList<String> Values = new ArrayList<String>();
             String Periode = "";
-        //recuperation des donnee
-        switch (num_service) {
-            case 1:
-                service = "REA";
-                Requete = "select  count(*) from chambre where chambre.code_service ='" + service + "'";
-                break;
-            case 2:
-                service = "CHG";
-                Requete = "select  count(*) from chambre where chambre.code_service ='" + service + "'";
-                break;
-            case 3:
-                service = "CAR";
-                Requete = "select  count(*) from chambre where chambre.code_service ='" + service + "'";
-                break;
-        }System.out.println(Requete);
+            //recuperation des donnee
+            switch (num_service) {
+                case 1:
+                    service = "REA";
+                    Requete = "select  count(*) from chambre where chambre.code_service ='" + service + "'";
+                    break;
+                case 2:
+                    service = "CHG";
+                    Requete = "select  count(*) from chambre where chambre.code_service ='" + service + "'";
+                    break;
+                case 3:
+                    service = "CAR";
+                    Requete = "select  count(*) from chambre where chambre.code_service ='" + service + "'";
+                    break;
+            }
+            System.out.println(Requete);
             Values = C.remplirChampsRequete(Requete);
             for (String s : Values) {
                 System.out.println(s);
@@ -856,13 +844,6 @@ public class GUI_reporting extends javax.swing.JFrame {
     }
 
 
-    private void btnHistoriqueRequetesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoriqueRequetesActionPerformed
-        // TODO add your handling code here:
-
-        //ouvrir le fichier où sont rangé les requetes
-
-    }//GEN-LAST:event_btnHistoriqueRequetesActionPerformed
-
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
         // TODO add your handling code here:
 
@@ -921,7 +902,6 @@ public class GUI_reporting extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnHistoriqueRequetes;
     private javax.swing.JButton btnLancerStat;
     private javax.swing.JButton btnRetour;
     private javax.swing.JComboBox jComboBox1;

@@ -4,7 +4,21 @@
  * and open the template in the editor.
  */
 package GUI;
+
+import dataElements.Docteur;
+import dataElements.Infirmier;
+import java.util.ArrayList;
 import BDD.*;
+import dataElements.Chambre;
+import dataElements.Employe;
+import dataElements.Hospitalisation;
+import dataElements.Malade;
+import dataElements.Service;
+import dataElements.Soigne;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Axel
@@ -28,12 +42,26 @@ public class GUI_modifications extends javax.swing.JFrame {
     private void initComponents() {
 
         lblModification = new javax.swing.JLabel();
-        cmbTable = new javax.swing.JComboBox();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtContenuTable = new javax.swing.JTextArea();
+        cmbTableMod = new javax.swing.JComboBox();
         btnAfficherTable = new javax.swing.JButton();
         btnModifierTable = new javax.swing.JButton();
+        lblModLigne = new javax.swing.JLabel();
+        lblAjoutLigne = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        cmbTableAjout = new javax.swing.JComboBox();
+        btnAjoutLigne = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
+        jTextField8 = new javax.swing.JTextField();
+        btnRetourMenu = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,29 +69,14 @@ public class GUI_modifications extends javax.swing.JFrame {
         lblModification.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         lblModification.setText("Modification");
 
-        cmbTable.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selectionnez une table", "Docteur", "Imfirmier", "Employé", "Malade", "Soigne", "Service", "Chambre", "Hospitalisation" }));
-        cmbTable.setToolTipText("");
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         txtContenuTable.setColumns(20);
         txtContenuTable.setRows(5);
         jScrollPane1.setViewportView(txtContenuTable);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        cmbTableMod.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selectionnez une table", "docteur", "infirmier", "employe", "malade", "soigne", "service", "chambre", "hospitalisation" }));
+        cmbTableMod.setToolTipText("");
 
         btnAfficherTable.setBackground(new java.awt.Color(0, 102, 0));
         btnAfficherTable.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -77,42 +90,185 @@ public class GUI_modifications extends javax.swing.JFrame {
         btnModifierTable.setBackground(new java.awt.Color(0, 102, 0));
         btnModifierTable.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnModifierTable.setText("Modifier la table");
+        btnModifierTable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModifierTableActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnAfficherTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnModifierTable, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                    .addComponent(cmbTableMod, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(cmbTableMod, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAfficherTable, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnModifierTable, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
+                .addContainerGap())
+        );
+
+        lblModLigne.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblModLigne.setText("Modification de lignes ");
+
+        lblAjoutLigne.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblAjoutLigne.setText("Ajout de lignes : ");
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        cmbTableAjout.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selectionnez une table", "docteur", "infirmier", "employe", "malade", "soigne", "service", "chambre", "hospitalisation" }));
+        cmbTableAjout.setToolTipText("");
+        cmbTableAjout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbTableAjoutActionPerformed(evt);
+            }
+        });
+
+        btnAjoutLigne.setBackground(new java.awt.Color(0, 102, 0));
+        btnAjoutLigne.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnAjoutLigne.setText("Ajouter la ligne");
+        btnAjoutLigne.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAjoutLigneActionPerformed(evt);
+            }
+        });
+
+        jTextField1.setText("jTextField1");
+
+        jTextField2.setText("jTextField2");
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
+        jTextField3.setText("jTextField3");
+
+        jTextField4.setText("jTextField4");
+
+        jTextField5.setText("jTextField5");
+
+        jTextField6.setText("jTextField6");
+
+        jTextField7.setText("jTextField7");
+
+        jTextField8.setText("jTextField8");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnAjoutLigne, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                    .addComponent(cmbTableAjout, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                    .addComponent(jTextField4)
+                    .addComponent(jTextField7))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                    .addComponent(jTextField5)
+                    .addComponent(jTextField8))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                    .addComponent(jTextField6))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(cmbTableAjout, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(jTextField1)
+                    .addComponent(jTextField2)
+                    .addComponent(jTextField3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnAjoutLigne, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                            .addComponent(jTextField8))))
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+
+        btnRetourMenu.setText("Retour Menu");
+        btnRetourMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRetourMenuActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(279, Short.MAX_VALUE)
-                .addComponent(lblModification, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(301, 301, 301))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cmbTable, 0, 220, Short.MAX_VALUE)
-                    .addComponent(btnAfficherTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnModifierTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblModLigne, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                        .addComponent(lblModification, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(301, 301, 301))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblAjoutLigne, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRetourMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblModification, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(cmbTable, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAfficherTable, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnModifierTable, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(239, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblModification, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblModLigne, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblAjoutLigne, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnRetourMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -120,17 +276,211 @@ public class GUI_modifications extends javax.swing.JFrame {
 
     private void btnAfficherTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAfficherTableActionPerformed
         // TODO add your handling code here:
+        txtContenuTable.setText(""); //on clear le txtContenuTable avvant de réafficher dedans
         
-        switch(cmbTable.getSelectedIndex()){
-            case 1 : // requete avec table Docteur
-                // for (i=0; i<
-                //txtContenuTable.setText(" il faut changer le text mais setText efface ce qui était déja écrit ");
-                break;
+        try {
+            Connexion C = new Connexion("password.txt");
+            ArrayList<String> Values = new ArrayList<String>();
+            String requete = cmbTableMod.getSelectedItem().toString();
             
+            if(cmbTableMod.getSelectedItem().toString()=="docteur"){
+                System.out.println("Vous êtes ici !");
+                requete = "select distinct * from docteur,employe where docteur.numero=employe.numero";
+                Values = C.remplirChampsRequete(requete);
+            }
+            if(cmbTableMod.getSelectedItem().toString()=="infirmier"){
+                requete = "select distinct * from infirmier,employe where infirmier.numero=employe.numero";
+                Values = C.remplirChampsRequete(requete);
+            }
+            if(cmbTableMod.getSelectedItem().toString()!="infirmier" && cmbTableMod.getSelectedItem().toString()!="docteur"){
+                Values = C.remplirChampsRequete("select * from " + requete);
+            }
+            
+            if (Values.isEmpty()){
+                txtContenuTable.setText(""); //on clear le txtContenuTable avvant de réafficher dedans
+                System.out.println("Aucun résultat trouvé !");
+                txtContenuTable.setText("Aucun résultat trouvé !");
+            }
+            for(String s : Values){
+                System.out.println(s);
+                txtContenuTable.append(s);
+            }
+            C.destroy();
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI_rechercher.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUI_rechercher.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnAfficherTableActionPerformed
+
+    private void btnAjoutLigneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAjoutLigneActionPerformed
+        // TODO add your handling code here:
+        
+        try{
+            Connexion C = new Connexion("password.txt");
+            ArrayList<String> Values = new ArrayList<String>();
+
+            switch(cmbTableAjout.getSelectedIndex()){
+                case 1 : Docteur d = new Docteur(Integer.parseInt(jTextField1.getText()), jTextField2.getText(), jTextField3.getText(), jTextField4.getText(), jTextField5.getText(), jTextField6.getText()); //nouveau Docteur
+                    d.getAddRequest();
+                    break; 
+                case 2 : Infirmier i = new Infirmier(Integer.parseInt(jTextField1.getText()), jTextField2.getText(), jTextField3.getText(), jTextField4.getText(), jTextField5.getText(), jTextField6.getText(),jTextField7.getText(),Double.parseDouble(jTextField7.getText())); //nouveau Imfirmier
+                    i.getAddRequest();
+                    break;
+                case 3 : Employe e = new Employe(Integer.parseInt(jTextField1.getText()), jTextField2.getText(), jTextField3.getText(), jTextField4.getText(), jTextField5.getText()); //nouveau Employé
+                    e.getAddRequest();
+                    break;
+                case 4 : Malade m = new Malade(Integer.parseInt(jTextField1.getText()), jTextField2.getText(), jTextField3.getText(), jTextField4.getText(), jTextField5.getText(), jTextField6.getText());//nouveau Malade
+                    m.getAddRequest();
+                    break;
+                case 5 : Soigne so = new Soigne(Integer.parseInt(jTextField1.getText()),Integer.parseInt(jTextField2.getText()));//nouveau Soigne
+                    so.getAddRequest();
+                    break;
+                case 6 : Service se = new Service(jTextField1.getText(), jTextField2.getText(), jTextField3.getText(), Integer.parseInt(jTextField4.getText()));//nouveau Service
+                    se.getAddRequest();
+                    break;
+                case 7 : Chambre c =new Chambre(jTextField1.getText(), Integer.parseInt(jTextField2.getText()), Integer.parseInt(jTextField3.getText()), Integer.parseInt(jTextField4.getText()));//nouveau Chambre
+                    c.getAddRequest();
+                    break;
+                case 8 : Hospitalisation h = new Hospitalisation(Integer.parseInt(jTextField1.getText()), jTextField2.getText(), Integer.parseInt(jTextField3.getText()), Integer.parseInt(jTextField4.getText()));//nouveau Hospitalisation
+                    h.getAddRequest();
+                    break;  
+            }
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(GUI_rechercher.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(GUI_rechercher.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnAjoutLigneActionPerformed
+
+    private void cmbTableAjoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTableAjoutActionPerformed
+        // TODO add your handling code here:
+        
+        jTextField1.setVisible(false);// on re-efface tous les jtextfields
+        jTextField2.setVisible(false);
+        jTextField3.setVisible(false);
+        jTextField4.setVisible(false);
+        jTextField5.setVisible(false);
+        jTextField6.setVisible(false);
+        jTextField7.setVisible(false);
+        jTextField8.setVisible(false);
+        
+        switch(cmbTableAjout.getSelectedIndex()){
+            case 1 : jTextField1.setText("Entrez le numéro"); //nouveau Docteur
+                jTextField2.setText("Entrez le nom");
+                jTextField3.setText("Entrez le prenom");
+                jTextField4.setText("Entrez l'adresse");
+                jTextField5.setText("Entrez le numéro de téléphone");
+                jTextField6.setText("Entrez la spécialité");
+                jTextField1.setVisible(true); //on re-affiche 
+                jTextField2.setVisible(true);
+                jTextField3.setVisible(true);
+                jTextField4.setVisible(true);
+                jTextField5.setVisible(true);
+                jTextField6.setVisible(true);
+                break;
+            case 2 : jTextField1.setText("Entrez le numéro"); //nouveau Imfirmier
+                jTextField2.setText("Entrez le nom");
+                jTextField3.setText("Entrez le prenom");
+                jTextField4.setText("Entrez l'adresse");
+                jTextField5.setText("Entrez le numéro de téléphone");
+                jTextField6.setText("Entrez le code-service");
+                jTextField7.setText("Entrez le rotation");
+                jTextField8.setText("Entrez le salaire");
+                jTextField1.setVisible(true);
+                jTextField2.setVisible(true);
+                jTextField3.setVisible(true);
+                jTextField4.setVisible(true);
+                jTextField5.setVisible(true);
+                jTextField6.setVisible(true);
+                jTextField7.setVisible(true);
+                jTextField8.setVisible(true);
+                break;
+            case 3 : jTextField1.setText("Entrez le numéro"); //nouveau Employé
+                jTextField2.setText("Entrez le nom");
+                jTextField3.setText("Entrez le prenom");
+                jTextField4.setText("Entrez l'adresse");
+                jTextField5.setText("Entrez le numéro de téléphone");
+                jTextField1.setVisible(true);
+                jTextField2.setVisible(true);
+                jTextField3.setVisible(true);
+                jTextField4.setVisible(true);
+                jTextField5.setVisible(true);
+                break;
+            case 4 : jTextField1.setText("Entrez le numéro"); //nouveau Malade
+                jTextField2.setText("Entrez le nom");
+                jTextField3.setText("Entrez le prenom");
+                jTextField4.setText("Entrez l'adresse");
+                jTextField5.setText("Entrez le numéro de téléphone");
+                jTextField6.setText("Entrez la mutuelle");
+                jTextField1.setVisible(true);
+                jTextField2.setVisible(true);
+                jTextField3.setVisible(true);
+                jTextField4.setVisible(true);
+                jTextField5.setVisible(true);
+                jTextField6.setVisible(true);
+                break;
+            case 5 : jTextField1.setText("Entrez le numéro du docteur"); //nouveau Soigne
+                jTextField2.setText("Entrez le numéro du malade");
+                jTextField1.setVisible(true);
+                jTextField2.setVisible(true);
+                break;
+            case 6 : jTextField1.setText("Entrez le code-service"); //nouveau Service
+                jTextField2.setText("Entrez le nom du service");
+                jTextField3.setText("Entrez la lettre du batiment");
+                jTextField4.setText("Entrez le numéro du directeur");
+                jTextField1.setVisible(true);
+                jTextField2.setVisible(true);
+                jTextField3.setVisible(true);
+                jTextField4.setVisible(true);
+                break;
+            case 7 : jTextField1.setText("Entrez le code-service"); //nouveau Chambre
+                jTextField2.setText("Entrez le numéro de chambre");
+                jTextField3.setText("Entrez le numéro du surveillant");
+                jTextField4.setText("Entrez le nombre de lit");
+                jTextField1.setVisible(true);
+                jTextField2.setVisible(true);
+                jTextField3.setVisible(true);
+                jTextField4.setVisible(true);
+                break;
+            case 8 : jTextField1.setText("Entrez le numéro de malade"); //nouveau Hospitalisation
+                jTextField2.setText("Entrez le code-service");
+                jTextField3.setText("Entrez le numéro de chambre");
+                jTextField4.setText("Entrez le nombre de lit");
+                jTextField1.setVisible(true);
+                jTextField2.setVisible(true);
+                jTextField3.setVisible(true);
+                jTextField4.setVisible(true);
+                break;
+            default : jTextField1.setText(""); //mode par défaut
+                jTextField2.setText("");
+                jTextField3.setText("");
+                jTextField4.setText("");
+                jTextField5.setText("");
+                jTextField6.setText("");
+                break;
         }
         
+    }//GEN-LAST:event_cmbTableAjoutActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void btnRetourMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetourMenuActionPerformed
+        // TODO add your handling code here:
         
-    }//GEN-LAST:event_btnAfficherTableActionPerformed
+        GUI_Hospital ghosto = new GUI_Hospital();
+        this.dispose();
+        ghosto.setVisible(true);
+    }//GEN-LAST:event_btnRetourMenuActionPerformed
+
+    private void btnModifierTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifierTableActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_btnModifierTableActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,21 +509,40 @@ public class GUI_modifications extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new GUI_modifications().setVisible(true);
+                
             }
         });
+        
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAfficherTable;
+    private javax.swing.JButton btnAjoutLigne;
     private javax.swing.JButton btnModifierTable;
-    private javax.swing.JComboBox cmbTable;
+    private javax.swing.JToggleButton btnRetourMenu;
+    private javax.swing.JComboBox cmbTableAjout;
+    private javax.swing.JComboBox cmbTableMod;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JLabel lblAjoutLigne;
+    private javax.swing.JLabel lblModLigne;
     private javax.swing.JLabel lblModification;
     private javax.swing.JTextArea txtContenuTable;
     // End of variables declaration//GEN-END:variables

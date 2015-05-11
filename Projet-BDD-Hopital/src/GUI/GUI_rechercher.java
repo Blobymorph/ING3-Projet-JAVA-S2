@@ -512,7 +512,7 @@ public class GUI_rechercher extends javax.swing.JFrame {
             }
             if (ckbHospitalisation.isSelected()){
                 From.add("hospitalisation");
-                Where.add("malde.numero = hospitalisation.no_malade");
+                Where.add("malade.numero = hospitalisation.no_malade");
                 if (ckbChambre.isSelected()){
                     From.add("chambre");
                     From.add("service");
